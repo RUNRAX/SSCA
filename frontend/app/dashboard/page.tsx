@@ -13,57 +13,60 @@ import { LocationsDashboard } from '@/components/widgets/LocationsDashboard';
 import { SystemWindows } from '@/components/widgets/SystemWindows';
 import { MediaControls } from '@/components/widgets/MediaControls';
 import { ActiveCallOverlay } from '@/components/widgets/ActiveCallOverlay';
+import { PageTransition } from '@/components/transitions/PageTransition';
 
 export default function DashboardPage() {
   return (
-    <main className="min-h-screen w-full relative">
-      <CollageGrid>
+    <PageTransition>
+      <main className="min-h-screen w-full relative">
+        <CollageGrid>
         
-        <SpringDrag id="music" className="top-[5%] left-[5%] z-20">
+        <SpringDrag id="music" className="relative md:absolute md:top-[5%] md:left-[5%] z-20">
           <AppleMusicWidget />
         </SpringDrag>
         
-        <SpringDrag id="reminders" className="top-[2%] left-[30%] z-10">
+        <SpringDrag id="reminders" className="relative md:absolute md:top-[2%] md:left-[30%] z-10">
           <RemindersWidget />
         </SpringDrag>
         
-        <SpringDrag id="weather" className="top-[3%] right-[5%] z-10">
+        <SpringDrag id="weather" className="relative md:absolute md:top-[3%] md:right-[5%] z-10">
           <WeatherWidget />
         </SpringDrag>
         
-        <SpringDrag id="chat" className="top-[30%] left-[8%] z-30">
+        <SpringDrag id="chat" className="relative md:absolute md:top-[30%] md:left-[8%] z-30">
           <BrowserWindow />
         </SpringDrag>
         
-        <SpringDrag id="notifications" className="top-[28%] right-[32%] z-20">
+        <SpringDrag id="notifications" className="relative md:absolute md:top-[28%] md:right-[32%] z-20">
           <NotificationStack />
         </SpringDrag>
         
-        <SpringDrag id="phone" className="bottom-[8%] left-[6%] z-10">
+        <SpringDrag id="phone" className="relative md:absolute md:bottom-[8%] md:left-[6%] z-10">
           <PhoneControls />
         </SpringDrag>
         
-        <SpringDrag id="filter" className="bottom-[6%] left-[36%] z-20">
+        <SpringDrag id="filter" className="relative md:absolute md:bottom-[6%] md:left-[36%] z-20">
           <FilteringMenu />
         </SpringDrag>
         
-        <SpringDrag id="locations" className="bottom-[4%] right-[4%] z-30">
+        <SpringDrag id="locations" className="relative md:absolute md:bottom-[4%] md:right-[4%] z-30">
           <LocationsDashboard />
         </SpringDrag>
         
-        <SpringDrag id="active-call" className="top-[60%] left-[12%] z-40">
+        <SpringDrag id="active-call" className="relative md:absolute md:top-[60%] md:left-[12%] z-40">
           <ActiveCallOverlay />
         </SpringDrag>
 
-        <div className="absolute top-[48%] left-[55%] -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none">
+        <div className="relative md:absolute md:top-[48%] md:left-[55%] md:-translate-x-1/2 md:-translate-y-1/2 z-0 pointer-events-none mb-6 md:mb-0">
           <MediaControls />
         </div>
         
-        <SpringDrag id="system-windows" className="top-[42%] right-[10%] z-40">
+        <SpringDrag id="system-windows" className="relative md:absolute md:top-[42%] md:right-[10%] z-40">
           <SystemWindows />
         </SpringDrag>
         
-      </CollageGrid>
-    </main>
+        </CollageGrid>
+      </main>
+    </PageTransition>
   );
 }

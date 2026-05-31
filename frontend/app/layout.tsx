@@ -3,6 +3,7 @@ import "./globals.css";
 import { LiquidDistortion } from "@/components/glass/LiquidDistortion";
 import { BackgroundGradient } from "@/components/layout/BackgroundGradient";
 import { AuthProvider } from "@/components/auth/AuthProvider";
+import { RouteTransitionProvider } from "@/components/transitions/RouteTransitionProvider";
 
 export const metadata: Metadata = {
   title: "SSCA Dashboard",
@@ -20,7 +21,9 @@ export default function RootLayout({
         <AuthProvider>
           <LiquidDistortion />
           <BackgroundGradient />
-          {children}
+          <RouteTransitionProvider>
+            {children}
+          </RouteTransitionProvider>
         </AuthProvider>
       </body>
     </html>

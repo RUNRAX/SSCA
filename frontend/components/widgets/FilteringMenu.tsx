@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { GlassPanel } from '@/components/glass/GlassPanel';
 import { FILTER_ITEMS } from '@/lib/constants';
 import { Check, UserX, AlertTriangle, Trash2, MessageCircle } from 'lucide-react';
@@ -18,18 +18,35 @@ const getIcon = (iconStr: string) => {
 
 export function FilteringMenu() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const badgeRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+  useEffect(() => {
+    // When active index changes, animate the badge to scale in
+    if (badgeRefs.current[activeIndex]) {
+      gsap.fromTo(badgeRefs.current[activeIndex],
+        { scale: 0.5, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }
+      );
+    }
+  }, [activeIndex]);
 
   return (
-    <GlassPanel intensity="medium" className="w-[240px] flex flex-col overflow-hidden">
-      <div className="p-2 flex flex-col gap-1">
+    <GlassPanel intensity="medium" hoverGlow className="w-[240px] flex flex-col overflow-hidden">
+      <div className="p-2 flex flex-col gap-1 relative">
+        {/* Animated highlight background */}
+        <div 
+          className="absolute left-2 right-2 h-10 bg-white/15 rounded-xl transition-all duration-300 ease-out z-0"
+          style={{ top: `${8 + (activeIndex * 44)}px` }}
+        />
+        
         {FILTER_ITEMS.map((item, idx) => {
           const isActive = activeIndex === idx;
           return (
             <button 
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className={`flex items-center justify-between w-full px-3 py-2.5 rounded-xl transition-all duration-300 ${
-                isActive ? 'bg-white/15' : 'hover:bg-white/5'
+              className={`relative z-10 flex items-center justify-between w-full px-3 h-10 rounded-xl transition-colors duration-300 ${
+                !isActive ? 'hover:bg-white/5' : ''
               }`}
             >
               <div className="flex items-center gap-3">
@@ -41,7 +58,12 @@ export function FilteringMenu() {
                 </span>
               </div>
               {item.count !== null && (
-                <span className="text-xs font-semibold text-white/50">{item.count}</span>
+                <span 
+                  ref={(el) => { badgeRefs.current[idx] = el; }} 
+                  className={`text-xs font-semibold ${isActive ? 'text-white' : 'text-white/50'}`}
+                >
+                  {item.count}
+                </span>
               )}
             </button>
           );

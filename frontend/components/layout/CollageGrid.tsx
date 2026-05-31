@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useMousePosition } from '@/hooks/useMousePosition';
 
 interface CollageGridProps {
   children: React.ReactNode;
@@ -9,62 +10,71 @@ interface CollageGridProps {
 
 export function CollageGrid({ children }: CollageGridProps) {
   const gridRef = useRef<HTMLDivElement>(null);
+  const mouse = useMousePosition();
 
   useEffect(() => {
     if (gridRef.current) {
-      // Entrance animation for all children
       const childrenElements = Array.from(gridRef.current.children);
       
-      gsap.fromTo(childrenElements, 
-        { 
-          y: 60, 
-          opacity: 0, 
-          scale: 0.8,
-          rotation: () => (Math.random() - 0.5) * 5 
-        },
-        { 
-          y: 0, 
-          opacity: 1, 
-          scale: 1,
-          rotation: 0,
-          duration: 1.2, 
-          stagger: 0.08, 
-          ease: "elastic.out(1, 0.6)",
-          delay: 0.2
-        }
-      );
-
-      // Subtle parallax effect on mouse move
-      const handleMouseMove = (e: MouseEvent) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 20;
-        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      // Staggered cascade entrance
+      childrenElements.forEach((el, i) => {
+        // Elements further back start smaller
+        const depthScale = 1 - (i % 3) * 0.05; // 1.0 to 0.9
+        const isLeft = i % 2 === 0;
         
-        childrenElements.forEach((el, i) => {
-          const depth = 1 + (i % 3) * 0.5; // Pseudo depth
-          gsap.to(el, {
-            x: x * depth,
-            y: y * depth,
-            duration: 1,
-            ease: "power2.out",
-            overwrite: "auto" // Only overwrite x/y animations
-          });
-        });
-      };
-
-      window.addEventListener('mousemove', handleMouseMove);
-      return () => window.removeEventListener('mousemove', handleMouseMove);
+        gsap.fromTo(el, 
+          { 
+            y: 80 + Math.random() * 40, 
+            x: isLeft ? -40 : 40,
+            opacity: 0, 
+            scale: 0.7,
+            rotation: (Math.random() - 0.5) * 10
+          },
+          { 
+            y: 0, 
+            x: 0,
+            opacity: 1, 
+            scale: depthScale,
+            rotation: 0,
+            duration: 1.4, 
+            ease: "elastic.out(1, 0.7)",
+            delay: 0.1 + (i * 0.06),
+            clearProps: "scale" // Clear scale so drag interactions can take over smoothly
+          }
+        );
+      });
     }
   }, []);
+
+  // Parallax effect on mouse move
+  useEffect(() => {
+    if (gridRef.current) {
+      const childrenElements = Array.from(gridRef.current.children);
+      const x = mouse.x * 15;
+      const y = mouse.y * 15;
+      
+      childrenElements.forEach((el, i) => {
+        const depth = 1 + (i % 3) * 0.4;
+        
+        gsap.to(el, {
+          x: x * depth,
+          y: y * depth,
+          rotationX: mouse.y * -3 * depth, // 3D tilt
+          rotationY: mouse.x * 3 * depth,  // 3D tilt
+          duration: 1.2,
+          ease: "power1.out",
+          overwrite: "auto"
+        });
+      });
+    }
+  }, [mouse]);
 
   return (
     <div 
       ref={gridRef}
-      className="relative w-full max-w-[1440px] mx-auto min-h-screen p-8 sm:p-12 lg:p-20 overflow-hidden"
+      className="relative w-full max-w-[1440px] mx-auto min-h-screen p-4 sm:p-12 lg:p-20 overflow-x-hidden overflow-y-auto md:overflow-hidden flex flex-col md:block items-center gap-8 pt-24 md:pt-12 pb-24 md:pb-12"
+      style={{ perspective: "1000px" }} // For 3D rotation
     >
-      {/* 
-        We use an absolute positioning strategy for the collage to allow overlapping and physics-based drag.
-        The layout positions are defined as top/left/right/bottom classes on the children wrappers.
-      */}
       {children}
     </div>
   );

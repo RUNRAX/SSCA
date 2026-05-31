@@ -66,26 +66,26 @@ export function SignupForm() {
           {error}
         </div>
       )}
-      <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-[var(--color-text-secondary)] ml-1">Email</label>
+      <div className="flex flex-col gap-1 group">
+        <label className="text-sm font-medium text-[var(--color-text-secondary)] ml-1 group-focus-within:text-white transition-colors">Email</label>
         <input 
           type="email" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="bg-[var(--glass-bg-light)] border border-[var(--glass-border)] rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-accent-teal)] transition-colors"
+          className="bg-[var(--glass-bg-light)] border border-[var(--glass-border)] rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-accent-teal)] focus:shadow-[0_0_15px_rgba(0,230,255,0.3)] focus:-translate-y-0.5 hover:border-white/30 transition-all duration-300"
           placeholder="name@example.com"
         />
       </div>
-      <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium text-[var(--color-text-secondary)] ml-1">Password</label>
+      <div className="flex flex-col gap-1 group">
+        <label className="text-sm font-medium text-[var(--color-text-secondary)] ml-1 group-focus-within:text-white transition-colors">Password</label>
         <input 
           type="password" 
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength={8}
-          className="bg-[var(--glass-bg-light)] border border-[var(--glass-border)] rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-accent-teal)] transition-colors"
+          className="bg-[var(--glass-bg-light)] border border-[var(--glass-border)] rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-accent-teal)] focus:shadow-[0_0_15px_rgba(0,230,255,0.3)] focus:-translate-y-0.5 hover:border-white/30 transition-all duration-300"
           placeholder="Min 8 characters"
         />
       </div>

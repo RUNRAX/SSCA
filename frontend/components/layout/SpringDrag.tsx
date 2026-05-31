@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useEffect } from 'react';
 import { Draggable } from 'gsap/Draggable';
 import gsap from 'gsap';
@@ -20,29 +22,54 @@ export function SpringDrag({ children, className = '', onDragEnd, id }: SpringDr
 
   useEffect(() => {
     if (containerRef.current && typeof window !== 'undefined') {
-      // Use standard draggable for simplicity, but with bounds if needed
-      dragInstance.current = Draggable.create(containerRef.current, {
+      let lastX = 0;
+      let lastY = 0;
+      const isMobile = window.innerWidth < 768;
+
+      if (!isMobile) {
+        dragInstance.current = Draggable.create(containerRef.current, {
         type: "x,y",
-        inertia: true,
+        inertia: true, // Will fall back gracefully if InertiaPlugin isn't registered
         bounds: "body",
         onPress: function() {
-          // Bring to front and add press effect
           gsap.to(this.target, { 
-            scale: 1.02, 
-            boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
-            duration: 0.2, 
+            scale: 1.05, 
+            boxShadow: "0 30px 60px rgba(0,0,0,0.5)", 
+            duration: 0.3, 
             ease: "back.out(1.7)" 
           });
-          // Ensure it's on top of other widgets
           this.target.style.zIndex = "100";
+          lastX = this.x;
+          lastY = this.y;
+        },
+        onDrag: function() {
+          // Calculate momentum for tilt
+          const dx = this.x - lastX;
+          const dy = this.y - lastY;
+          lastX = this.x;
+          lastY = this.y;
+          
+          // Clamp rotation to max 15 degrees
+          const tiltX = gsap.utils.clamp(-15, 15, dy * -0.5);
+          const tiltY = gsap.utils.clamp(-15, 15, dx * 0.5);
+          
+          gsap.to(this.target, {
+            rotationX: tiltX,
+            rotationY: tiltY,
+            duration: 0.1,
+            ease: "power1.out",
+            overwrite: "auto"
+          });
         },
         onRelease: function() {
-          // Remove press effect
+          // Elastic bounce back on release
           gsap.to(this.target, { 
             scale: 1, 
             boxShadow: "var(--glass-shadow)",
-            duration: 0.5, 
-            ease: "elastic.out(1, 0.5)" 
+            rotationX: 0,
+            rotationY: 0,
+            duration: 0.8, 
+            ease: "elastic.out(1.2, 0.4)" 
           });
           this.target.style.zIndex = "10";
           if (onDragEnd) {
@@ -50,6 +77,7 @@ export function SpringDrag({ children, className = '', onDragEnd, id }: SpringDr
           }
         }
       });
+      }
     }
 
     return () => {
@@ -60,8 +88,15 @@ export function SpringDrag({ children, className = '', onDragEnd, id }: SpringDr
   }, [onDragEnd]);
 
   return (
-    <div ref={containerRef} id={id} className={`absolute touch-none cursor-grab active:cursor-grabbing ${className}`}>
-      {children}
+    <div 
+      ref={containerRef} 
+      id={id} 
+      className={`touch-none cursor-grab active:cursor-grabbing will-change-transform ${className.includes('relative') ? '' : 'absolute'} ${className}`}
+      style={{ perspective: '800px' }} // Needed for 3D tilt on children
+    >
+      <div className="w-full h-full" style={{ transformStyle: 'preserve-3d' }}>
+        {children}
+      </div>
     </div>
   );
 }

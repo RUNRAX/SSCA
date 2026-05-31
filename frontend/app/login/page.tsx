@@ -6,6 +6,7 @@ import { GlassPanel } from '@/components/glass/GlassPanel';
 import { LoginForm } from '@/components/auth/LoginForm';
 import { SignupForm } from '@/components/auth/SignupForm';
 import { useAuthContext } from '@/components/auth/AuthProvider';
+import { PageTransition } from '@/components/transitions/PageTransition';
 
 export default function LoginPage() {
   const [isLoginMode, setIsLoginMode] = useState(true);
@@ -25,7 +26,8 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen relative flex items-center justify-center p-6 overflow-hidden">
+    <PageTransition>
+      <main className="min-h-screen relative flex items-center justify-center p-6 overflow-hidden">
       
       {/* Decorative floating widgets in the background */}
       <div className="absolute top-[10%] left-[15%] w-64 h-64 bg-blue-500/20 rounded-full blur-[80px] pointer-events-none" />
@@ -79,10 +81,37 @@ export default function LoginPage() {
             </button>
           </div>
 
-          {isLoginMode ? <LoginForm /> : <SignupForm />}
+          <div style={{ perspective: "1000px" }}>
+            <div 
+              className="relative w-full transition-transform duration-500 will-change-transform"
+              style={{
+                transformStyle: "preserve-3d",
+                transform: isLoginMode ? "rotateY(0deg)" : "rotateY(180deg)"
+              }}
+            >
+              <div 
+                className="w-full"
+                style={{
+                  backfaceVisibility: "hidden"
+                }}
+              >
+                <LoginForm />
+              </div>
+              <div 
+                className="w-full absolute top-0 left-0"
+                style={{
+                  backfaceVisibility: "hidden",
+                  transform: "rotateY(180deg)"
+                }}
+              >
+                <SignupForm />
+              </div>
+            </div>
+          </div>
           
         </GlassPanel>
       </div>
     </main>
+    </PageTransition>
   );
 }
