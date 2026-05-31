@@ -6,7 +6,7 @@ import gsap from 'gsap';
 interface GlassPanelProps {
   intensity?: 'light' | 'medium' | 'heavy';
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   bobAnimation?: boolean;
   hoverGlow?: boolean;
   scaleOnHover?: boolean;
@@ -16,7 +16,7 @@ interface GlassPanelProps {
 export function GlassPanel({
   intensity = 'medium',
   className = '',
-  children,
+  children = null,
   bobAnimation = false,
   hoverGlow = false,
   scaleOnHover = false,
