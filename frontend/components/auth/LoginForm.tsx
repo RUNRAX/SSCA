@@ -49,7 +49,7 @@ export function LoginForm() {
 
   const handleButtonPress = () => {
     if (buttonRef.current) {
-      gsap.to(buttonRef.current, { scale: 0.92, duration: 0.1, ease: "power2.in" });
+      gsap.to(buttonRef.current, { scale: 0.95, duration: 0.1, ease: "power2.in" });
     }
   };
 
@@ -60,33 +60,37 @@ export function LoginForm() {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
       {error && (
-        <div className="bg-[var(--color-danger)]/20 border border-[var(--color-danger)]/50 text-[var(--color-danger)] p-3 rounded-xl text-sm font-medium">
+        <div className="bg-red-500/10 border border-red-500/30 text-red-400 p-3.5 rounded-xl text-sm font-medium backdrop-blur-md shadow-sm">
           {error}
         </div>
       )}
-      <div className="flex flex-col gap-1 group">
-        <label className="text-sm font-medium text-[var(--color-text-secondary)] ml-1 group-focus-within:text-white transition-colors">Email</label>
-        <input 
-          type="email" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className="bg-[var(--glass-bg-light)] border border-[var(--glass-border)] rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-accent-teal)] focus:shadow-[0_0_15px_rgba(0,230,255,0.3)] focus:-translate-y-0.5 hover:border-white/30 transition-all duration-300"
-          placeholder="name@example.com"
-        />
+      <div className="flex flex-col gap-1.5 group">
+        <label className="text-xs font-semibold text-white/50 uppercase tracking-wider ml-1 group-focus-within:text-white transition-colors duration-300">Email</label>
+        <div className="relative">
+          <input 
+            type="email" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:bg-white/10 focus:border-[var(--color-accent-teal)] focus:ring-1 focus:ring-[var(--color-accent-teal)] transition-all duration-300 shadow-inner"
+            placeholder="name@example.com"
+          />
+        </div>
       </div>
-      <div className="flex flex-col gap-1 group">
-        <label className="text-sm font-medium text-[var(--color-text-secondary)] ml-1 group-focus-within:text-white transition-colors">Password</label>
-        <input 
-          type="password" 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="bg-[var(--glass-bg-light)] border border-[var(--glass-border)] rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-accent-teal)] focus:shadow-[0_0_15px_rgba(0,230,255,0.3)] focus:-translate-y-0.5 hover:border-white/30 transition-all duration-300"
-          placeholder="••••••••"
-        />
+      <div className="flex flex-col gap-1.5 group">
+        <label className="text-xs font-semibold text-white/50 uppercase tracking-wider ml-1 group-focus-within:text-white transition-colors duration-300">Password</label>
+        <div className="relative">
+          <input 
+            type="password" 
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:bg-white/10 focus:border-[var(--color-accent-teal)] focus:ring-1 focus:ring-[var(--color-accent-teal)] transition-all duration-300 shadow-inner"
+            placeholder="••••••••"
+          />
+        </div>
       </div>
       <button 
         ref={buttonRef}
@@ -94,9 +98,10 @@ export function LoginForm() {
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
         onMouseLeave={handleButtonRelease}
-        className="mt-2 bg-[var(--color-accent-teal)] text-[var(--color-bg-base)] font-bold py-3 rounded-xl hover:bg-[var(--color-accent-blue)] transition-colors shadow-lg"
+        className="mt-4 relative overflow-hidden bg-white text-black font-extrabold py-3.5 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] group"
       >
-        Sign In
+        <span className="relative z-10">Sign In</span>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
       </button>
     </form>
   );
