@@ -3,7 +3,11 @@ import { useRouter } from 'next/navigation';
 import { useAuthContext } from './AuthProvider';
 import gsap from 'gsap';
 
-export function LoginForm() {
+interface LoginFormProps {
+  onToggleMode: () => void;
+}
+
+export function LoginForm({ onToggleMode }: LoginFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -60,49 +64,63 @@ export function LoginForm() {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col w-full">
+      <h2 className="text-3xl font-extrabold text-white mb-8 tracking-tight">Login</h2>
+      
       {error && (
-        <div className="bg-red-500/10 border border-red-500/30 text-red-400 p-3.5 rounded-xl text-sm font-medium backdrop-blur-md shadow-sm">
+        <div className="bg-red-500/20 border border-red-500/50 text-red-200 p-3.5 rounded-lg text-sm font-medium mb-6">
           {error}
         </div>
       )}
-      <div className="flex flex-col gap-1.5 group">
-        <label className="text-xs font-semibold text-white/50 uppercase tracking-wider ml-1 group-focus-within:text-white transition-colors duration-300">Email</label>
-        <div className="relative">
-          <input 
-            type="email" 
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:bg-white/10 focus:border-[var(--color-accent-teal)] focus:ring-1 focus:ring-[var(--color-accent-teal)] transition-all duration-300 shadow-inner"
-            placeholder="name@example.com"
-          />
-        </div>
+      
+      <div className="flex flex-col gap-2 mb-6">
+        <label className="text-xs font-semibold text-white/90 tracking-wide uppercase">Email</label>
+        <input 
+          type="email" 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="w-full bg-white text-black font-medium rounded-md px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#e83445] transition-shadow shadow-sm"
+          placeholder="name@example.com"
+        />
       </div>
-      <div className="flex flex-col gap-1.5 group">
-        <label className="text-xs font-semibold text-white/50 uppercase tracking-wider ml-1 group-focus-within:text-white transition-colors duration-300">Password</label>
-        <div className="relative">
-          <input 
-            type="password" 
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:bg-white/10 focus:border-[var(--color-accent-teal)] focus:ring-1 focus:ring-[var(--color-accent-teal)] transition-all duration-300 shadow-inner"
-            placeholder="••••••••"
-          />
-        </div>
+      
+      <div className="flex flex-col gap-2 mb-2">
+        <label className="text-xs font-semibold text-white/90 tracking-wide uppercase">Password</label>
+        <input 
+          type="password" 
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          className="w-full bg-white text-black font-medium rounded-md px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#e83445] transition-shadow shadow-sm"
+          placeholder="••••••••"
+        />
       </div>
+      
+      <div className="flex justify-end mb-8">
+        <button type="button" className="text-xs text-white/80 hover:text-white transition-colors font-medium">
+          Forgot Password?
+        </button>
+      </div>
+      
       <button 
         ref={buttonRef}
         type="submit"
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
         onMouseLeave={handleButtonRelease}
-        className="mt-4 relative overflow-hidden bg-white text-black font-extrabold py-3.5 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] group"
+        className="w-full bg-[#da2b3a] hover:bg-[#c32230] text-white font-semibold py-3.5 rounded-md transition-colors flex items-center justify-center gap-2 shadow-lg mb-8"
       >
-        <span className="relative z-10">Sign In</span>
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
+        Lets Go 
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
       </button>
+      
+      <div className="text-center text-xs text-white/80 font-medium">
+        Do you have account?{' '}
+        <button type="button" onClick={onToggleMode} className="text-white font-bold hover:underline ml-1">
+          Sign UP
+        </button>
+      </div>
     </form>
   );
 }

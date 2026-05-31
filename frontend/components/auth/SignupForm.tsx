@@ -3,7 +3,11 @@ import { useRouter } from 'next/navigation';
 import { useAuthContext } from './AuthProvider';
 import gsap from 'gsap';
 
-export function SignupForm() {
+interface SignupFormProps {
+  onToggleMode: () => void;
+}
+
+export function SignupForm({ onToggleMode }: SignupFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -60,50 +64,58 @@ export function SignupForm() {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col w-full">
+      <h2 className="text-3xl font-extrabold text-white mb-8 tracking-tight">Sign Up</h2>
+      
       {error && (
-        <div className="bg-red-500/10 border border-red-500/30 text-red-400 p-3.5 rounded-xl text-sm font-medium backdrop-blur-md shadow-sm">
+        <div className="bg-red-500/20 border border-red-500/50 text-red-200 p-3.5 rounded-lg text-sm font-medium mb-6">
           {error}
         </div>
       )}
-      <div className="flex flex-col gap-1.5 group">
-        <label className="text-xs font-semibold text-white/50 uppercase tracking-wider ml-1 group-focus-within:text-white transition-colors duration-300">Email</label>
-        <div className="relative">
-          <input 
-            type="email" 
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:bg-white/10 focus:border-[var(--color-accent-purple)] focus:ring-1 focus:ring-[var(--color-accent-purple)] transition-all duration-300 shadow-inner"
-            placeholder="name@example.com"
-          />
-        </div>
+      
+      <div className="flex flex-col gap-2 mb-6">
+        <label className="text-xs font-semibold text-white/90 tracking-wide uppercase">Email</label>
+        <input 
+          type="email" 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="w-full bg-white text-black font-medium rounded-md px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#e83445] transition-shadow shadow-sm"
+          placeholder="name@example.com"
+        />
       </div>
-      <div className="flex flex-col gap-1.5 group">
-        <label className="text-xs font-semibold text-white/50 uppercase tracking-wider ml-1 group-focus-within:text-white transition-colors duration-300">Password</label>
-        <div className="relative">
-          <input 
-            type="password" 
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            minLength={8}
-            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:bg-white/10 focus:border-[var(--color-accent-purple)] focus:ring-1 focus:ring-[var(--color-accent-purple)] transition-all duration-300 shadow-inner"
-            placeholder="Min 8 characters"
-          />
-        </div>
+      
+      <div className="flex flex-col gap-2 mb-8">
+        <label className="text-xs font-semibold text-white/90 tracking-wide uppercase">Password</label>
+        <input 
+          type="password" 
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          minLength={8}
+          className="w-full bg-white text-black font-medium rounded-md px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#e83445] transition-shadow shadow-sm"
+          placeholder="Min 8 characters"
+        />
       </div>
+      
       <button 
         ref={buttonRef}
         type="submit"
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
         onMouseLeave={handleButtonRelease}
-        className="mt-4 relative overflow-hidden bg-gradient-to-r from-[var(--color-accent-teal)] to-[var(--color-accent-purple)] text-white font-extrabold py-3.5 rounded-xl transition-all shadow-[0_0_20px_rgba(150,0,255,0.3)] hover:shadow-[0_0_30px_rgba(150,0,255,0.5)] group"
+        className="w-full bg-[#da2b3a] hover:bg-[#c32230] text-white font-semibold py-3.5 rounded-md transition-colors flex items-center justify-center gap-2 shadow-lg mb-8"
       >
-        <span className="relative z-10">Create Account</span>
-        <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        Create Account
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
       </button>
+      
+      <div className="text-center text-xs text-white/80 font-medium">
+        Already have an account?{' '}
+        <button type="button" onClick={onToggleMode} className="text-white font-bold hover:underline ml-1">
+          Sign IN
+        </button>
+      </div>
     </form>
   );
 }
