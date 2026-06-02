@@ -7,6 +7,20 @@ from app.api.dependencies import get_current_user
 
 router = APIRouter()
 
+@router.get("/debug-firebase")
+async def debug_firebase():
+    from app.main import firebase_init_error
+    settings = get_settings()
+    b64 = settings.firebase_credentials_base64
+    
+    return {
+        "error": firebase_init_error,
+        "b64_length": len(b64) if b64 else 0,
+        "b64_start": b64[:20] if b64 else None,
+        "b64_end": b64[-20:] if b64 else None,
+        "has_newlines": '\n' in b64 if b64 else False,
+    }
+
 @router.post("/signup", response_model=AuthResponse, status_code=201)
 async def signup(request: SignUpRequest):
     """Register a new user via Firebase Admin."""
