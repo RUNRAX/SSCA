@@ -10,11 +10,11 @@ class Settings(BaseSettings):
     )
 
     # Firebase
-    firebase_credentials_base64: str
-    firebase_api_key: str  # Needed for Identity Toolkit REST API (Email/Password Login)
+    firebase_credentials_base64: str = ""
+    firebase_api_key: str = ""  # Needed for Identity Toolkit REST API (Email/Password Login)
 
     # Google Gemini
-    google_api_key: str
+    google_api_key: str = ""
     gemini_model: str = "gemini-2.5-flash"
     embedding_model: str = "models/text-embedding-004"
 

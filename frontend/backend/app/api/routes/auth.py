@@ -10,6 +10,10 @@ router = APIRouter()
 @router.post("/signup", response_model=AuthResponse, status_code=201)
 async def signup(request: SignUpRequest):
     """Register a new user via Firebase Admin."""
+    from app.main import firebase_init_error
+    if firebase_init_error:
+        raise HTTPException(status_code=400, detail=f"Backend Configuration Error: {firebase_init_error}")
+
     settings = get_settings()
     
     try:

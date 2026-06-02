@@ -8,7 +8,10 @@ import json
 from app.core.config import get_settings
 from app.api.routes import auth, chat, memory
 
+firebase_init_error = None
+
 def initialize_firebase():
+    global firebase_init_error
     settings = get_settings()
     try:
         # Check if already initialized
@@ -17,6 +20,9 @@ def initialize_firebase():
         # Decode base64 credentials
         try:
             b64 = settings.firebase_credentials_base64.strip()
+            if not b64:
+                firebase_init_error = "FIREBASE_CREDENTIALS_BASE64 is empty."
+                return
             # Fix missing padding if any
             b64 += "=" * ((4 - len(b64) % 4) % 4)
             creds_json = base64.b64decode(b64).decode('utf-8')
@@ -24,8 +30,7 @@ def initialize_firebase():
             cred = credentials.Certificate(cred_dict)
             firebase_admin.initialize_app(cred)
         except Exception as e:
-            # We want to know exactly what failed
-            raise ValueError(f"Failed to initialize Firebase: {str(e)}")
+            firebase_init_error = f"Failed to initialize Firebase: {str(e)}"
 
 def create_app() -> FastAPI:
     settings = get_settings()
