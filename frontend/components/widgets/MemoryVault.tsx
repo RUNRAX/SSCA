@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { GlassPanel } from '@/components/glass/GlassPanel';
 import { useAuth } from '@/hooks/useAuth';
+import { apiFetch } from '@/lib/api';
 
 interface Memory {
   id: string;
@@ -24,13 +25,7 @@ export function MemoryVault() {
     }
     try {
       setIsLoading(true);
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/v1/memories`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-      if (!res.ok) throw new Error('Failed to fetch memories');
-      const data = await res.json();
+      const data = await apiFetch<any>('/memories');
       setMemories(data.memories || []);
     } catch (err: any) {
       console.error(err);
@@ -47,13 +42,9 @@ export function MemoryVault() {
   const handleDelete = async (id: string) => {
     if (!isAuthenticated || !token) return;
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/v1/memories/${id}`, {
+      await apiFetch<any>(`/memories/${id}`, {
         method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
       });
-      if (!res.ok) throw new Error('Failed to delete memory');
       setMemories(memories.filter(m => m.id !== id));
     } catch (err) {
       console.error(err);

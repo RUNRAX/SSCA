@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GlassPanel } from '@/components/glass/GlassPanel';
 import { useAuth } from '@/hooks/useAuth';
+import { apiFetch } from '@/lib/api';
 
 export function AIChatInterface() {
   const { token, isAuthenticated } = useAuth();
@@ -29,12 +30,8 @@ export function AIChatInterface() {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/v1/chat`, {
+      const data = await apiFetch<any>('/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
         body: JSON.stringify({
           query: userMessage,
           stream: false,
@@ -42,9 +39,6 @@ export function AIChatInterface() {
         }),
       });
 
-      if (!res.ok) throw new Error('Chat request failed');
-
-      const data = await res.json();
       setMessages((prev) => [...prev, { role: 'ai', content: data.response }]);
     } catch (err) {
       console.error(err);
