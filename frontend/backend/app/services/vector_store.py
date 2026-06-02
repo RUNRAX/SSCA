@@ -106,15 +106,17 @@ class VectorStoreService:
             docs = (
                 self.db.collection(self.collection_name)
                 .where("user_id", "==", user_id)
-                .order_by("created_at", direction="DESCENDING")
                 .stream()
             )
-            return [{
+            results = [{
                 "id": doc.id, 
                 "content": doc.to_dict()["content"],
                 "metadata": doc.to_dict().get("metadata", {}),
                 "created_at": doc.to_dict().get("created_at")
             } for doc in docs]
+            # Sort by created_at descending in python to avoid firestore composite index error
+            results.sort(key=lambda x: x["created_at"], reverse=True)
+            return results
             
         return await asyncio.to_thread(_list)
 

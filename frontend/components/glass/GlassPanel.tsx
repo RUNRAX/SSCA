@@ -93,9 +93,6 @@ export function GlassPanel({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={`glass-panel ${glassClass} ${hoverClass} ${className}`}
-      style={{
-        filter: 'url(#liquidDistortion)', // Apply SVG distortion filter
-      }}
     >
       {children}
     </div>
