@@ -16,12 +16,16 @@ def initialize_firebase():
     except ValueError:
         # Decode base64 credentials
         try:
-            creds_json = base64.b64decode(settings.firebase_credentials_base64).decode('utf-8')
+            b64 = settings.firebase_credentials_base64.strip()
+            # Fix missing padding if any
+            b64 += "=" * ((4 - len(b64) % 4) % 4)
+            creds_json = base64.b64decode(b64).decode('utf-8')
             cred_dict = json.loads(creds_json)
             cred = credentials.Certificate(cred_dict)
             firebase_admin.initialize_app(cred)
         except Exception as e:
-            print(f"Failed to initialize Firebase: {e}")
+            # We want to know exactly what failed
+            raise ValueError(f"Failed to initialize Firebase: {str(e)}")
 
 def create_app() -> FastAPI:
     settings = get_settings()
