@@ -19,7 +19,9 @@ def initialize_firebase():
     except ValueError:
         # Decode base64 credentials
         try:
-            b64 = settings.firebase_credentials_base64.strip()
+            import re
+            # Remove ALL whitespace from the base64 string (newlines, spaces, etc.)
+            b64 = re.sub(r'\s+', '', settings.firebase_credentials_base64)
             if not b64:
                 firebase_init_error = "FIREBASE_CREDENTIALS_BASE64 is empty."
                 return
@@ -27,6 +29,11 @@ def initialize_firebase():
             b64 += "=" * ((4 - len(b64) % 4) % 4)
             creds_json = base64.b64decode(b64).decode('utf-8')
             cred_dict = json.loads(creds_json)
+            
+            # Extremely common issue: private_key gets double-escaped
+            if "private_key" in cred_dict:
+                cred_dict["private_key"] = cred_dict["private_key"].replace("\\n", "\n")
+                
             cred = credentials.Certificate(cred_dict)
             firebase_admin.initialize_app(cred)
         except Exception as e:
