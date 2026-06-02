@@ -20,22 +20,35 @@ def initialize_firebase():
         # Decode base64 credentials
         try:
             import re
-            # Remove ALL whitespace from the base64 string (newlines, spaces, etc.)
+            import tempfile
+            import os
+            
+            # Remove ALL whitespace from the base64 string
             b64 = re.sub(r'\s+', '', settings.firebase_credentials_base64)
             if not b64:
                 firebase_init_error = "FIREBASE_CREDENTIALS_BASE64 is empty."
                 return
+                
             # Fix missing padding if any
             b64 += "=" * ((4 - len(b64) % 4) % 4)
             creds_json = base64.b64decode(b64).decode('utf-8')
-            cred_dict = json.loads(creds_json)
             
-            # Extremely common issue: private_key gets double-escaped
-            if "private_key" in cred_dict:
-                cred_dict["private_key"] = cred_dict["private_key"].replace("\\n", "\n")
+            # Write the exact JSON string to a temporary file
+            # This bypasses any string encoding bugs in the Vercel cryptography library
+            # when passing dictionaries directly.
+            with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json') as f:
+                f.write(creds_json)
+                tmp_path = f.name
                 
-            cred = credentials.Certificate(cred_dict)
+            cred = credentials.Certificate(tmp_path)
             firebase_admin.initialize_app(cred)
+            
+            # Clean up the temporary file
+            try:
+                os.unlink(tmp_path)
+            except Exception:
+                pass
+                
         except Exception as e:
             firebase_init_error = f"Failed to initialize Firebase: {str(e)}"
 
