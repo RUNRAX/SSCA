@@ -8,6 +8,7 @@ email-validator>=2.2.0
 # Firebase
 firebase-admin>=6.5.0
 google-cloud-firestore>=2.16.0
+rsa>=4.9
 
 # AI / LLM
 langchain>=0.3.0
