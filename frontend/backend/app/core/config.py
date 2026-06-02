@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     # Google Gemini
     google_api_key: str = ""
     gemini_model: str = "gemini-2.5-flash"
-    embedding_model: str = "models/text-embedding-004"
+    embedding_model: str = "text-embedding-004"
 
     # App
     cors_origins: List[str] = ["http://localhost:3000", "https://ssca-frontend.onrender.com"]
