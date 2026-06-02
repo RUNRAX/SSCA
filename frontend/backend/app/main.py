@@ -97,7 +97,7 @@ def create_app() -> FastAPI:
         print("GLOBAL EXCEPTION:", exc)
         return JSONResponse(
             status_code=500,
-            content={"detail": "Internal server error", "type": type(exc).__name__, "traceback": traceback.format_exc()},
+            content={"detail": f"Backend Error: {str(exc)}", "type": type(exc).__name__, "traceback": traceback.format_exc()},
         )
 
     return app
