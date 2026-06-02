@@ -8,7 +8,7 @@ from app.models.chat import ChatRequest, ChatResponse
 
 router = APIRouter()
 
-@router.post("/")
+@router.post("")
 async def chat(
     request: ChatRequest,
     user: dict = Depends(get_current_user),

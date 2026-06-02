@@ -6,7 +6,7 @@ from app.models.memory import MemoryCreateRequest, MemoryResponse, MemoryListRes
 
 router = APIRouter()
 
-@router.post("/", response_model=MemoryResponse, status_code=201)
+@router.post("", response_model=MemoryResponse, status_code=201)
 async def create_memory(
     request: MemoryCreateRequest,
     user: dict = Depends(get_current_user),
@@ -21,7 +21,7 @@ async def create_memory(
     )
     return MemoryResponse(**result)
 
-@router.get("/", response_model=MemoryListResponse)
+@router.get("", response_model=MemoryListResponse)
 async def list_memories(
     user: dict = Depends(get_current_user),
     firestore: Client = Depends(get_firestore_client),
