@@ -12,6 +12,10 @@ async def debug_firebase():
     from app.main import firebase_init_error
     import base64
     import json
+    import traceback
+    import firebase_admin
+    from firebase_admin import credentials
+    
     settings = get_settings()
     b64 = settings.firebase_credentials_base64
     
@@ -19,6 +23,7 @@ async def debug_firebase():
         "error": firebase_init_error,
         "b64_length": len(b64) if b64 else 0,
         "has_newlines": '\n' in b64 if b64 else False,
+        "traceback": None
     }
     
     if b64:
@@ -28,14 +33,13 @@ async def debug_firebase():
             b64_clean += "=" * ((4 - len(b64_clean) % 4) % 4)
             creds_json = base64.b64decode(b64_clean).decode('utf-8')
             cred_dict = json.loads(creds_json)
-            pk = cred_dict.get("private_key", "")
-            debug_info["pk_length"] = len(pk)
-            debug_info["pk_start"] = pk[:35]
-            debug_info["pk_end"] = pk[-35:]
-            debug_info["pk_newline_count"] = pk.count('\n')
-            debug_info["pk_literal_slash_n_count"] = pk.count('\\n')
+            
+            # Try to initialize certificate manually here to get full traceback
+            cred = credentials.Certificate(cred_dict)
+            debug_info["cert_init"] = "Success"
         except Exception as e:
             debug_info["parse_error"] = str(e)
+            debug_info["traceback"] = traceback.format_exc()
             
     return debug_info
 
