@@ -10,16 +10,34 @@ router = APIRouter()
 @router.get("/debug-firebase")
 async def debug_firebase():
     from app.main import firebase_init_error
+    import base64
+    import json
     settings = get_settings()
     b64 = settings.firebase_credentials_base64
     
-    return {
+    debug_info = {
         "error": firebase_init_error,
         "b64_length": len(b64) if b64 else 0,
-        "b64_start": b64[:20] if b64 else None,
-        "b64_end": b64[-20:] if b64 else None,
         "has_newlines": '\n' in b64 if b64 else False,
     }
+    
+    if b64:
+        try:
+            import re
+            b64_clean = re.sub(r'\s+', '', b64)
+            b64_clean += "=" * ((4 - len(b64_clean) % 4) % 4)
+            creds_json = base64.b64decode(b64_clean).decode('utf-8')
+            cred_dict = json.loads(creds_json)
+            pk = cred_dict.get("private_key", "")
+            debug_info["pk_length"] = len(pk)
+            debug_info["pk_start"] = pk[:35]
+            debug_info["pk_end"] = pk[-35:]
+            debug_info["pk_newline_count"] = pk.count('\n')
+            debug_info["pk_literal_slash_n_count"] = pk.count('\\n')
+        except Exception as e:
+            debug_info["parse_error"] = str(e)
+            
+    return debug_info
 
 @router.post("/signup", response_model=AuthResponse, status_code=201)
 async def signup(request: SignUpRequest):
