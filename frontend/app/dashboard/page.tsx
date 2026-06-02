@@ -1,71 +1,31 @@
 'use client';
 
-import { CollageGrid } from '@/components/layout/CollageGrid';
-import { SpringDrag } from '@/components/layout/SpringDrag';
-import { AppleMusicWidget } from '@/components/widgets/AppleMusicWidget';
-import { RemindersWidget } from '@/components/widgets/RemindersWidget';
-import { WeatherWidget } from '@/components/widgets/WeatherWidget';
-import { BrowserWindow } from '@/components/widgets/BrowserWindow';
-import { NotificationStack } from '@/components/widgets/NotificationStack';
-import { PhoneControls } from '@/components/widgets/PhoneControls';
-import { FilteringMenu } from '@/components/widgets/FilteringMenu';
-import { LocationsDashboard } from '@/components/widgets/LocationsDashboard';
-import { SystemWindows } from '@/components/widgets/SystemWindows';
-import { MediaControls } from '@/components/widgets/MediaControls';
-import { ActiveCallOverlay } from '@/components/widgets/ActiveCallOverlay';
+import { AIChatInterface } from '@/components/widgets/AIChatInterface';
+import { MemoryVault } from '@/components/widgets/MemoryVault';
 import { PageTransition } from '@/components/transitions/PageTransition';
 
 export default function DashboardPage() {
   return (
     <PageTransition>
-      <main className="min-h-screen w-full relative">
-        <CollageGrid>
+      <main className="min-h-screen w-full relative pt-24 pb-8 px-4 md:px-8 max-w-7xl mx-auto">
         
-        <SpringDrag id="music" className="relative md:absolute md:top-[5%] md:left-[5%] z-20">
-          <AppleMusicWidget />
-        </SpringDrag>
-        
-        <SpringDrag id="reminders" className="relative md:absolute md:top-[2%] md:left-[30%] z-10">
-          <RemindersWidget />
-        </SpringDrag>
-        
-        <SpringDrag id="weather" className="relative md:absolute md:top-[3%] md:right-[5%] z-10">
-          <WeatherWidget />
-        </SpringDrag>
-        
-        <SpringDrag id="chat" className="relative md:absolute md:top-[30%] md:left-[8%] z-30">
-          <BrowserWindow />
-        </SpringDrag>
-        
-        <SpringDrag id="notifications" className="relative md:absolute md:top-[28%] md:right-[32%] z-20">
-          <NotificationStack />
-        </SpringDrag>
-        
-        <SpringDrag id="phone" className="relative md:absolute md:bottom-[8%] md:left-[6%] z-10">
-          <PhoneControls />
-        </SpringDrag>
-        
-        <SpringDrag id="filter" className="relative md:absolute md:bottom-[6%] md:left-[36%] z-20">
-          <FilteringMenu />
-        </SpringDrag>
-        
-        <SpringDrag id="locations" className="relative md:absolute md:bottom-[4%] md:right-[4%] z-30">
-          <LocationsDashboard />
-        </SpringDrag>
-        
-        <SpringDrag id="active-call" className="relative md:absolute md:top-[60%] md:left-[12%] z-40">
-          <ActiveCallOverlay />
-        </SpringDrag>
-
-        <div className="relative md:absolute md:top-[48%] md:left-[55%] md:-translate-x-1/2 md:-translate-y-1/2 z-0 pointer-events-none mb-6 md:mb-0">
-          <MediaControls />
+        <div className="mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Cognitive Engine</h1>
+          <p className="text-white/60 mt-2 text-lg">Your self-sovereign memory vault.</p>
         </div>
-        
-        <SpringDrag id="system-windows" className="relative md:absolute md:top-[42%] md:right-[10%] z-40">
-          <SystemWindows />
-        </SpringDrag>
-        
-        </CollageGrid>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[70vh] min-h-[600px]">
+          {/* Main Chat Interface takes up 2/3 of the screen on desktop */}
+          <div className="lg:col-span-2 h-full">
+            <AIChatInterface />
+          </div>
+
+          {/* Memory Vault takes up 1/3 of the screen on desktop */}
+          <div className="lg:col-span-1 h-full">
+            <MemoryVault />
+          </div>
+        </div>
+
       </main>
     </PageTransition>
   );
