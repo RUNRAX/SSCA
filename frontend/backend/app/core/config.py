@@ -13,10 +13,13 @@ class Settings(BaseSettings):
     firebase_credentials_base64: str = ""
     firebase_api_key: str = ""  # Needed for Identity Toolkit REST API (Email/Password Login)
 
-    # Google Gemini
+    # Google Gemini (used for embeddings only)
     google_api_key: str = ""
-    gemini_model: str = "gemini-1.5-flash"
     embedding_model: str = "gemini-embedding-001"
+
+    # xAI Grok (used for chat)
+    xai_api_key: str = ""
+    xai_model: str = "grok-3-mini-fast"
 
     # App
     cors_origins: List[str] = ["http://localhost:3000", "https://ssca-frontend.onrender.com"]

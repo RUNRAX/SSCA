@@ -1,4 +1,4 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
@@ -25,11 +25,12 @@ class CognitiveOrchestrator:
         self.vector_store = vector_store
         settings = get_settings()
 
-        self.llm = ChatGoogleGenerativeAI(
-            model=settings.gemini_model,
-            google_api_key=settings.google_api_key,
+        self.llm = ChatOpenAI(
+            model=settings.xai_model,
+            api_key=settings.xai_api_key,
+            base_url="https://api.x.ai/v1",
             temperature=0.7,
-            max_output_tokens=2048,
+            max_tokens=2048,
         )
 
         self.prompt = ChatPromptTemplate.from_messages([

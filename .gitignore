@@ -25,3 +25,7 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Secrets / Credentials
+*-firebase-adminsdk-*.json
+b64.txt
