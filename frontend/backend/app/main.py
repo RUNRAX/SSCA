@@ -91,11 +91,13 @@ def create_app() -> FastAPI:
     app.include_router(memory.router, prefix=f"{settings.api_v1_prefix}/memories", tags=["Memory"])
 
     # Global exception handler
+    import traceback
     @app.exception_handler(Exception)
     async def global_exception_handler(request: Request, exc: Exception):
+        print("GLOBAL EXCEPTION:", exc)
         return JSONResponse(
             status_code=500,
-            content={"detail": "Internal server error", "type": type(exc).__name__},
+            content={"detail": "Internal server error", "type": type(exc).__name__, "traceback": traceback.format_exc()},
         )
 
     return app
