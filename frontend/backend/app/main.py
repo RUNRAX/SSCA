@@ -1,6 +1,18 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+
+# --- MONKEYPATCH START ---
+# Force google-auth to use pure-python rsa to bypass Vercel AWS Lambda cryptography bugs
+try:
+    import google.auth.crypt
+    import google.auth.crypt._python_rsa as _python_rsa
+    google.auth.crypt.RSASigner = _python_rsa.RSASigner
+    google.auth.crypt.RSAVerifier = _python_rsa.RSAVerifier
+except Exception:
+    pass
+# --- MONKEYPATCH END ---
+
 import firebase_admin
 from firebase_admin import credentials
 import base64
