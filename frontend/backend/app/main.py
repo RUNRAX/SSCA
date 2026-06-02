@@ -1,8 +1,3 @@
-import sys
-# FORCE google-auth to use pure-python rsa instead of cryptography
-# This prevents AWS Lambda OpenSSL compatibility bugs with Firebase RSA keys!
-sys.modules['cryptography'] = None
-
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
