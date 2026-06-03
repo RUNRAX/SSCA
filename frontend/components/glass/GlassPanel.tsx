@@ -33,8 +33,8 @@ export function GlassPanel({
     if (enterAnimation) {
       gsap.fromTo(
         panelRef.current,
-        { opacity: 0, scale: 0.95, y: 15 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: 'back.out(1.2)', delay: 0.1 }
+        { opacity: 0, scale: 0.96, y: 20 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.1 }
       );
     }
 
@@ -63,8 +63,16 @@ export function GlassPanel({
     
     if (hoverGlow) {
       gsap.to(panelRef.current, { 
-        boxShadow: '0 0 30px hsla(220, 90%, 65%, 0.2), 0 0 60px hsla(270, 70%, 60%, 0.1), var(--glass-shadow)',
-        borderColor: 'rgba(255, 255, 255, 0.3)',
+        boxShadow: `
+          0 4px 24px 0 rgba(0, 0, 0, 0.3),
+          0 16px 56px 0 rgba(0, 0, 0, 0.2),
+          0 0 30px hsla(220, 90%, 65%, 0.15),
+          0 0 60px hsla(270, 70%, 60%, 0.08),
+          inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+          inset 0 0 20px 0 rgba(255, 255, 255, 0.04),
+          inset 0 -1px 0 0 rgba(0, 0, 0, 0.08)
+        `,
+        borderColor: 'rgba(255, 255, 255, 0.18)',
         duration: 0.4 
       });
     }
