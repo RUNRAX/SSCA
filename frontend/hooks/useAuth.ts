@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { apiFetch } from '../lib/api';
 import { LoginRequest, SignUpRequest, AuthResponse, UserResponse } from '../lib/types';
 
@@ -7,6 +8,7 @@ export function useAuth() {
   const [userId, setUserId] = useState<string | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const router = useRouter();
 
   const checkAuth = useCallback(async () => {
     const storedToken = localStorage.getItem('ssca_token');
@@ -68,6 +70,7 @@ export function useAuth() {
     setIsAuthenticated(false);
     setUserId(null);
     setToken(null);
+    router.push('/login');
   };
 
   return {
