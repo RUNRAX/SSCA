@@ -15,17 +15,13 @@ export function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[hsl(230,60%,4%)]">
-      {/* ── Image layer with Ken Burns ── */}
-      <div className="absolute inset-[-10%] w-[120%] h-[120%]">
+      {/* ── Image layer (Static & Optimized) ── */}
+      <div className="absolute inset-0 w-full h-full">
         <img
           src="/bg-dashboard.png"
           alt=""
           role="presentation"
           className="h-full w-full object-cover"
-          style={{
-            animation: 'kenBurns 40s ease-in-out infinite',
-            willChange: 'transform',
-          }}
           draggable={false}
         />
       </div>
@@ -39,12 +35,6 @@ export function AnimatedBackground() {
             linear-gradient(to bottom, rgba(5, 5, 20, 0.2) 0%, rgba(5, 5, 20, 0.15) 50%, rgba(5, 5, 20, 0.3) 100%)
           `,
         }}
-      />
-
-      {/* ── Noise texture overlay ── */}
-      <div
-        className="absolute inset-0 opacity-[0.025] mix-blend-overlay pointer-events-none"
-        style={{ backgroundImage: NOISE_SVG }}
       />
     </div>
   );
