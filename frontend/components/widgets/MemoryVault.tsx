@@ -276,7 +276,7 @@ export function MemoryVault() {
       </div>
 
       {/* ---- Memory List ---- */}
-      <div className="flex-1 overflow-y-auto pr-1 custom-scrollbar space-y-3">
+      <div className={`flex-1 pr-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth space-y-3 ${filteredMemories.length > 0 ? 'overflow-y-auto' : 'overflow-hidden'}`}>
         {isLoading && memories.length === 0 ? (
           <div className="flex justify-center items-center h-32">
             <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin" />

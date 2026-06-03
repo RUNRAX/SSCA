@@ -76,7 +76,7 @@ export function AIChatInterface() {
       </div>
 
       {/* ── Messages Area ── */}
-      <div className="flex-1 overflow-y-auto space-y-4 mb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className={`flex-1 space-y-4 mb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth ${messages.length > 0 ? 'overflow-y-auto' : 'overflow-hidden'}`}>
         {messages.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-center opacity-60">
             <FlaskConical className="w-16 h-16 mb-4 text-white/50" strokeWidth={1} />
