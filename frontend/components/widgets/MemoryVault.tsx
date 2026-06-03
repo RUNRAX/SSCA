@@ -242,8 +242,8 @@ export function MemoryVault() {
       className="glass-glow flex flex-col h-full rounded-3xl p-6 relative"
       style={{
         background: 'rgba(15, 20, 35, 0.05)',
-        backdropFilter: 'blur(24px) saturate(1.5)',
-        WebkitBackdropFilter: 'blur(24px) saturate(1.5)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
         overflow: 'visible',
       }}
     >
