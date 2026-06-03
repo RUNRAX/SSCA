@@ -34,7 +34,8 @@ export default function LoginPage() {
             loop 
             muted 
             playsInline 
-            className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
+            poster="/bg-northern-lights.png"
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-60 transition-opacity duration-1000"
           >
             <source src="/bg-video.mp4" type="video/mp4" />
           </video>
