@@ -22,56 +22,52 @@ export function Navbar() {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-[999] px-4 md:px-6 pt-3 pointer-events-none">
-      {/* Progressive Flowing Blur Background (with horizontal and vertical soft masking via composite) */}
-      <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none select-none z-[-1]">
-        {/* Heavy blur inside the nav bar area */}
-        <div 
-          className="absolute inset-0" 
-          style={{ 
-            backdropFilter: 'blur(24px) saturate(180%) brightness(120%)', 
-            WebkitBackdropFilter: 'blur(24px) saturate(180%) brightness(120%)', 
-            maskImage: 'linear-gradient(to bottom, black 0%, black 50%, transparent 75%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)', 
-            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 50%, transparent 75%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
-            maskComposite: 'intersect',
-            WebkitMaskComposite: 'source-in'
-          }} 
-        />
-        
-        {/* Soft fading blur outside the nav bar */}
-        <div 
-          className="absolute inset-0" 
-          style={{ 
-            backdropFilter: 'blur(8px) saturate(140%)', 
-            WebkitBackdropFilter: 'blur(8px) saturate(140%)', 
-            maskImage: 'linear-gradient(to bottom, transparent 50%, black 75%, transparent 95%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)', 
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 50%, black 75%, transparent 95%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
-            maskComposite: 'intersect',
-            WebkitMaskComposite: 'source-in'
-          }} 
-        />
-        
-        {/* Very subtle transition edge */}
-        <div 
-          className="absolute inset-0" 
-          style={{ 
-            backdropFilter: 'blur(2px)', 
-            WebkitBackdropFilter: 'blur(2px)', 
-            maskImage: 'linear-gradient(to bottom, transparent 75%, black 90%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)', 
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 75%, black 90%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
-            maskComposite: 'intersect',
-            WebkitMaskComposite: 'source-in'
-          }} 
-        />
-        
-        {/* Ambient tint overlay */}
-        <div 
-          className="absolute inset-0" 
-          style={{ 
-            background: 'linear-gradient(to bottom, var(--color-bg-base) 0%, rgba(15, 20, 35, 0.2) 50%, transparent 100%)',
-            maskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)'
-          }} 
-        />
+      {/* Progressive Flowing Blur Background */}
+      <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none select-none z-[-1] flex justify-center">
+        <div className="w-full max-w-7xl relative h-full">
+          {/* Heavy blur (Top) */}
+          <div 
+            className="absolute inset-0" 
+            style={{ 
+              backdropFilter: 'blur(40px) saturate(200%) brightness(110%)', 
+              WebkitBackdropFilter: 'blur(40px) saturate(200%) brightness(110%)', 
+              maskImage: 'linear-gradient(to bottom, black 0%, black 40%, transparent 60%)', 
+              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 40%, transparent 60%)'
+            }} 
+          />
+          
+          {/* Medium blur (Middle) */}
+          <div 
+            className="absolute inset-0" 
+            style={{ 
+              backdropFilter: 'blur(16px) saturate(160%)', 
+              WebkitBackdropFilter: 'blur(16px) saturate(160%)', 
+              maskImage: 'linear-gradient(to bottom, transparent 40%, black 60%, transparent 80%)', 
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 40%, black 60%, transparent 80%)'
+            }} 
+          />
+          
+          {/* Light blur (Bottom edge) */}
+          <div 
+            className="absolute inset-0" 
+            style={{ 
+              backdropFilter: 'blur(4px)', 
+              WebkitBackdropFilter: 'blur(4px)', 
+              maskImage: 'linear-gradient(to bottom, transparent 60%, black 80%, transparent 100%)', 
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 60%, black 80%, transparent 100%)'
+            }} 
+          />
+          
+          {/* Ambient tint overlay */}
+          <div 
+            className="absolute inset-0" 
+            style={{ 
+              background: 'linear-gradient(to bottom, var(--color-bg-base) 0%, rgba(15, 20, 35, 0.4) 50%, transparent 100%)',
+              maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)'
+            }} 
+          />
+        </div>
       </div>
       <nav
         className="ios-liquid-glass mx-auto max-w-7xl h-14 flex items-center justify-between px-5 md:px-6 pointer-events-auto relative"
