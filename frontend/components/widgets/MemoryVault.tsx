@@ -59,18 +59,17 @@ function DropdownMenu({ coords, currentCategory, onSelect, menuRef }: DropdownMe
     <div
       ref={menuRef}
       className="fixed z-[9999] origin-bottom-left"
+      onMouseDown={(e) => e.stopPropagation()}
       style={{
         bottom: coords.bottom,
         left: coords.left,
         width: coords.width,
-        /* Ultra-transparent glass */
-        background: 'rgba(255, 255, 255, 0.003)',
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
+        background: 'transparent',
+        backdropFilter: 'blur(2px)',
+        WebkitBackdropFilter: 'blur(2px)',
         borderRadius: '14px',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        boxShadow:
-          '0 4px 30px 0 rgba(0, 0, 0, 0.35), 0 12px 50px 0 rgba(0, 0, 0, 0.20), inset 0 1px 0 0 rgba(255, 255, 255, 0.08), inset 0 0 0 0.5px rgba(255, 255, 255, 0.05), inset 0 -1px 0 0 rgba(0, 0, 0, 0.15)',
+        border: '1px solid rgba(255, 255, 255, 0.05)',
+        boxShadow: 'inset 0 1px 0 0 rgba(255, 255, 255, 0.04)',
         overflow: 'hidden',
       }}
     >
@@ -81,8 +80,8 @@ function DropdownMenu({ coords, currentCategory, onSelect, menuRef }: DropdownMe
             onClick={() => onSelect(key)}
             className={`flex items-center gap-2.5 px-3 py-2.5 text-sm text-left rounded-[10px] transition-all duration-150 ${
               currentCategory === key
-                ? 'bg-white/15 text-white font-medium'
-                : 'text-white/70 hover:bg-white/10 hover:text-white'
+                ? 'bg-white/10 text-white font-medium'
+                : 'text-white/70 hover:bg-white/5 hover:text-white'
             }`}
           >
             <span
