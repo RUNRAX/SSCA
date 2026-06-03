@@ -62,8 +62,8 @@ export function Navbar() {
           <div 
             className="absolute inset-0" 
             style={{ 
-              backdropFilter: 'blur(3px) saturate(150%)', 
-              WebkitBackdropFilter: 'blur(3px) saturate(150%)', 
+              backdropFilter: 'blur(3px)', 
+              WebkitBackdropFilter: 'blur(3px)', 
               maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 80%)', 
               WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 80%)'
             }} 
@@ -84,9 +84,10 @@ export function Navbar() {
         className="ios-liquid-glass mx-auto max-w-7xl h-14 flex items-center justify-between px-5 md:px-6 pointer-events-auto relative"
         style={{
           borderRadius: '18px',
-          background: 'rgba(15, 20, 35, 0.05)', // 5% opacity dark tint over the glass
-          backdropFilter: 'blur(3px) saturate(150%)',
-          WebkitBackdropFilter: 'blur(3px) saturate(150%)',
+          background: 'rgba(255, 255, 255, 0.03)', // Brighter, softer tint
+          backdropFilter: 'blur(3px)',
+          WebkitBackdropFilter: 'blur(3px)',
+          boxShadow: '0 8px 32px 0 rgba(0, 180, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.15)',
         }}
       >
         {/* ── Left: Logo + Brand ── */}
