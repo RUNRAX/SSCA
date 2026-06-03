@@ -22,6 +22,7 @@ export function AnimatedBackground() {
           alt=""
           role="presentation"
           className="h-full w-full object-cover"
+          style={{ filter: 'grayscale(100%) contrast(125%) brightness(115%)' }}
           draggable={false}
         />
       </div>
