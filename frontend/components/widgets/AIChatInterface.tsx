@@ -55,9 +55,9 @@ export function AIChatInterface() {
       className="flex flex-col h-full rounded-3xl overflow-hidden p-6 glass-glow"
       enterAnimation
       style={{
-        background: 'rgba(15, 20, 35, 0.05)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
+        background: 'rgba(15, 20, 35, 0.25)',
+        backdropFilter: 'blur(36px)',
+        WebkitBackdropFilter: 'blur(36px)',
       }}
     >
       {/* ── Header ── */}
