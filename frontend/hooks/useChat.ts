@@ -1,7 +1,6 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useAuthContext } from '../components/auth/AuthProvider';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+import { getApiUrl } from '@/lib/api';
 
 export interface ChatMessage {
   id: string;
@@ -32,7 +31,7 @@ export function useChat() {
     setError(null);
 
     try {
-      const response = await fetch(`${API_BASE}/api/v1/chat/`, {
+      const response = await fetch(getApiUrl('/api/v1/chat/'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

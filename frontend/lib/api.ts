@@ -1,5 +1,12 @@
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
+export function getApiUrl(path: string) {
+  let base = API_BASE.replace(/\/$/, '');
+  if (base.endsWith('/api/v1') && path.startsWith('/api/v1')) {
+    base = base.slice(0, -7);
+  }
+  return `${base}${path}`;
+}
 export class ApiError extends Error {
   constructor(public status: number, message: string) {
     super(message);
@@ -21,7 +28,7 @@ export async function apiFetch<T>(
     headers.set('Content-Type', 'application/json');
   }
 
-  const response = await fetch(`${API_BASE}${path}`, {
+  const response = await fetch(getApiUrl(path), {
     ...options,
     headers,
   });
