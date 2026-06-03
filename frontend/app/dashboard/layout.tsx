@@ -16,9 +16,7 @@ function DashboardGuard({ children }: { children: React.ReactNode }) {
   }, [isAuthenticated, isLoading, router]);
 
   if (isLoading || !isAuthenticated) {
-    return <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-pulse text-white/50">Loading Dashboard...</div>
-    </div>;
+    return <div className="min-h-screen bg-[#0a0515]" />;
   }
 
   return <>{children}</>;
