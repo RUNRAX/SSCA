@@ -36,13 +36,13 @@ export function AnimatedBackground() {
         />
       </div>
 
-      {/* ── Vignette + soft darken for text readability (lighter than before) ── */}
+      {/* ── Vignette + soft darken for text readability ── */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: `
-            radial-gradient(ellipse at center, transparent 30%, rgba(5, 5, 20, 0.5) 100%),
-            linear-gradient(to bottom, rgba(5, 5, 20, 0.35) 0%, rgba(5, 5, 20, 0.25) 50%, rgba(5, 5, 20, 0.4) 100%)
+            radial-gradient(ellipse at center, transparent 40%, rgba(5, 5, 20, 0.4) 100%),
+            linear-gradient(to bottom, rgba(5, 5, 20, 0.2) 0%, rgba(5, 5, 20, 0.15) 50%, rgba(5, 5, 20, 0.3) 100%)
           `,
         }}
       />
