@@ -40,7 +40,7 @@ export function GlassPanel({
         gsap.fromTo(
           panelRef.current,
           { opacity: 0, scale: 0.96, y: 20 },
-          { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.05, clearProps: 'all' }
+          { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.05, clearProps: 'opacity,scale,y' }
         );
       }
 
