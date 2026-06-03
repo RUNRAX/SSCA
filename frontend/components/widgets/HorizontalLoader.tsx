@@ -4,10 +4,11 @@ import gsap from 'gsap';
 interface HorizontalLoaderProps {
   color?: string;
   duration?: number;
+  text?: string;
   onComplete?: () => void;
 }
 
-export function HorizontalLoader({ color = 'bg-white', duration = 3.5, onComplete }: HorizontalLoaderProps) {
+export function HorizontalLoader({ color = 'bg-white', duration = 3.5, text = 'Initializing Engine...', onComplete }: HorizontalLoaderProps) {
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export function HorizontalLoader({ color = 'bg-white', duration = 3.5, onComplet
         <div className={`loader-progress h-full w-0 rounded-full shadow-[0_0_20px_inherit] ${color}`} />
       </div>
       <p className="mt-6 text-[10px] text-white/40 tracking-[0.3em] uppercase animate-pulse">
-        Initializing Engine...
+        {text}
       </p>
     </div>
   );

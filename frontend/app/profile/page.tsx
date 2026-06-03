@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { PageTransition } from '@/components/transitions/PageTransition';
 import { Navbar } from '@/components/layout/Navbar';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
+import { HorizontalLoader } from '@/components/widgets/HorizontalLoader';
 
 export default function ProfilePage() {
   // Mock data for UI layout
@@ -14,6 +15,7 @@ export default function ProfilePage() {
     purpose: '',
   });
   const [agentPersonality, setAgentPersonality] = useState('friendly');
+  const [showLoader, setShowLoader] = useState(true);
 
   // Load from local storage on mount
   useEffect(() => {
@@ -58,8 +60,12 @@ export default function ProfilePage() {
   ];
 
   return (
-    <PageTransition>
-      <div className="min-h-screen text-white relative">
+    <>
+      {showLoader && (
+        <HorizontalLoader color="bg-cyan-500" duration={2} text="Initializing Profile..." onComplete={() => setShowLoader(false)} />
+      )}
+      <PageTransition>
+        <div className="min-h-screen text-white relative">
         
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
@@ -186,5 +192,6 @@ export default function ProfilePage() {
         </div>
       </div>
     </PageTransition>
+    </>
   );
 }
