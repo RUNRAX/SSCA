@@ -25,45 +25,45 @@ export function Navbar() {
       {/* Progressive Flowing Blur Background */}
       <div className="absolute top-0 left-0 right-0 h-24 pointer-events-none select-none z-[-1] flex justify-center">
         <div className="w-full max-w-7xl relative h-full">
-          {/* Layer 1: Widest, softest blur. Fades out at the very bottom */}
+          {/* Layer 1 */}
           <div 
             className="absolute inset-0" 
             style={{ 
-              backdropFilter: 'blur(8px)', 
-              WebkitBackdropFilter: 'blur(8px)', 
+              backdropFilter: 'blur(1px)', 
+              WebkitBackdropFilter: 'blur(1px)', 
               maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)', 
               WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)'
             }} 
           />
           
-          {/* Layer 2: Medium blur. Fades out sooner */}
+          {/* Layer 2 */}
           <div 
             className="absolute inset-0" 
             style={{ 
-              backdropFilter: 'blur(16px)', 
-              WebkitBackdropFilter: 'blur(16px)', 
+              backdropFilter: 'blur(2px)', 
+              WebkitBackdropFilter: 'blur(2px)', 
               maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 90%)', 
               WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 90%)'
             }} 
           />
           
-          {/* Layer 3: Heavy blur. Fades out even sooner */}
+          {/* Layer 3 */}
           <div 
             className="absolute inset-0" 
             style={{ 
-              backdropFilter: 'blur(32px) saturate(140%)', 
-              WebkitBackdropFilter: 'blur(32px) saturate(140%)', 
+              backdropFilter: 'blur(4px) saturate(110%)', 
+              WebkitBackdropFilter: 'blur(4px) saturate(110%)', 
               maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 85%)', 
               WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 85%)'
             }} 
           />
           
-          {/* Layer 4: Heaviest blur. Fades out immediately below the nav */}
+          {/* Layer 4 */}
           <div 
             className="absolute inset-0" 
             style={{ 
-              backdropFilter: 'blur(56px) saturate(180%)', 
-              WebkitBackdropFilter: 'blur(56px) saturate(180%)', 
+              backdropFilter: 'blur(5px) saturate(120%)', 
+              WebkitBackdropFilter: 'blur(5px) saturate(120%)', 
               maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 80%)', 
               WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 80%)'
             }} 
@@ -85,6 +85,8 @@ export function Navbar() {
         style={{
           borderRadius: '18px',
           background: 'rgba(15, 20, 35, 0.05)', // 5% opacity dark tint over the glass
+          backdropFilter: 'blur(5px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(5px) saturate(120%)',
         }}
       >
         {/* ── Left: Logo + Brand ── */}
