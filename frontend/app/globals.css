@@ -36,9 +36,9 @@
   --glass-blur-heavy: blur(48px) saturate(2.2);
 
   /* Glow System — Enhanced */
-  --glass-glow-blue: hsla(220, 90%, 65%, 0.85);
-  --glass-glow-purple: hsla(270, 70%, 60%, 0.85);
-  --glass-glow-teal: hsla(195, 90%, 55%, 0.85);
+  --glass-glow-blue: hsla(220, 90%, 65%, 0.15);
+  --glass-glow-purple: hsla(270, 70%, 60%, 0.12);
+  --glass-glow-teal: hsla(195, 90%, 55%, 0.12);
 
   /* Typography */
   --font-display: 'Bricolage Grotesque', sans-serif;

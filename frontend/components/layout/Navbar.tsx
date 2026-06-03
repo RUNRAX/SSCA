@@ -26,8 +26,8 @@ export function Navbar() {
       <div 
         className="absolute top-0 left-0 right-0 h-28 pointer-events-none"
         style={{
-          backdropFilter: 'blur(1px)',
-          WebkitBackdropFilter: 'blur(1px)',
+          backdropFilter: 'blur(16px) saturate(180%) brightness(130%)',
+          WebkitBackdropFilter: 'blur(16px) saturate(180%) brightness(130%)',
           background: 'linear-gradient(to bottom, var(--color-bg-base) 0%, rgba(15, 20, 35, 0.4) 65%, transparent 100%)',
           maskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
