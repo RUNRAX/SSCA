@@ -237,15 +237,7 @@ export function MemoryVault() {
                 </button>
 
                 {isDropdownOpen && (
-                  <div 
-                    className="absolute bottom-full left-0 mb-2 w-44 border border-white/15 rounded-xl overflow-hidden z-[100] animate-in shadow-2xl origin-bottom-left"
-                    style={{
-                      background: 'transparent',
-                      backdropFilter: 'blur(40px) saturate(180%)',
-                      WebkitBackdropFilter: 'blur(40px) saturate(180%)',
-                      boxShadow: '0 -8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 0 0 0.5px rgba(255,255,255,0.05)'
-                    }}
-                  >
+                  <div className="absolute bottom-full left-0 mb-2 w-44 ios-liquid-glass border border-white/10 rounded-xl overflow-hidden z-[100] animate-in shadow-xl origin-bottom-left">
                     <div className="p-1.5 flex flex-col gap-1">
                       {CATEGORY_KEYS.map((key) => (
                         <button
