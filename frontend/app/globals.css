@@ -20,8 +20,8 @@
   --glass-bg-light: hsla(230, 30%, 12%, 0.20);
   --glass-bg-medium: hsla(230, 30%, 10%, 0.35);
   --glass-bg-heavy: hsla(230, 30%, 8%, 0.45);
-  --glass-border: hsla(230, 30%, 60%, 0.18);
-  --glass-border-highlight: hsla(230, 40%, 70%, 0.25);
+  --glass-border: hsla(230, 30%, 60%, 0.02);
+  --glass-border-highlight: hsla(230, 40%, 70%, 0.02);
   --glass-shadow:
     /* Outer depth shadow */
     0 4px 30px 0 rgba(0, 0, 0, 0.35),
@@ -36,9 +36,9 @@
   --glass-blur-heavy: blur(48px) saturate(2.2);
 
   /* Glow System — Enhanced */
-  --glass-glow-blue: hsla(220, 90%, 65%, 0.15);
-  --glass-glow-purple: hsla(270, 70%, 60%, 0.12);
-  --glass-glow-teal: hsla(195, 90%, 55%, 0.12);
+  --glass-glow-blue: hsla(220, 90%, 65%, 0.02);
+  --glass-glow-purple: hsla(270, 70%, 60%, 0.02);
+  --glass-glow-teal: hsla(195, 90%, 55%, 0.02);
 
   /* Typography */
   --font-display: 'Bricolage Grotesque', sans-serif;
