@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { PageTransition } from '@/components/transitions/PageTransition';
 import { Navbar } from '@/components/layout/Navbar';
-import { AnimatedBackground } from '@/components/glass/AnimatedBackground';
+import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
 
 export default function ProfilePage() {
   // Mock data for UI layout
