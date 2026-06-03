@@ -6,9 +6,11 @@ import { LoginForm } from '@/components/auth/LoginForm';
 import { SignupForm } from '@/components/auth/SignupForm';
 import { useAuthContext } from '@/components/auth/AuthProvider';
 import Image from 'next/image';
+import { HorizontalLoader } from '@/components/widgets/HorizontalLoader';
 
 export default function LoginPage() {
   const [isLoginMode, setIsLoginMode] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
   const { isAuthenticated, isLoading } = useAuthContext();
   const router = useRouter();
 
@@ -27,6 +29,10 @@ export default function LoginPage() {
   return (
       <main className="min-h-screen w-full relative flex items-center justify-center bg-[#0a0515] overflow-hidden">
         
+        {showLoader && (
+          <HorizontalLoader color="bg-white" duration={3.5} onComplete={() => setShowLoader(false)} />
+        )}
+
         {/* Video Background */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-black">
           <video 
