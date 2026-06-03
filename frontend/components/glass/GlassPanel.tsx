@@ -34,29 +34,33 @@ export function GlassPanel({
   useIsomorphicLayoutEffect(() => {
     if (!panelRef.current) return;
 
-    // Entry animation
-    if (enterAnimation) {
-      gsap.fromTo(
-        panelRef.current,
-        { opacity: 0, scale: 0.96, y: 20 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.05, clearProps: 'all' }
-      );
-    }
+    const ctx = gsap.context(() => {
+      // Entry animation
+      if (enterAnimation) {
+        gsap.fromTo(
+          panelRef.current,
+          { opacity: 0, scale: 0.96, y: 20 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.05, clearProps: 'all' }
+        );
+      }
 
-    // Bob animation
-    if (bobAnimation) {
-      const duration = 3 + Math.random() * 2;
-      const delay = Math.random() * 2;
-      
-      gsap.to(panelRef.current, {
-        y: "+=6",
-        duration: duration,
-        delay: delay,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-      });
-    }
+      // Bob animation
+      if (bobAnimation) {
+        const duration = 3 + Math.random() * 2;
+        const delay = Math.random() * 2;
+        
+        gsap.to(panelRef.current, {
+          y: "+=6",
+          duration: duration,
+          delay: delay,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+      }
+    }, panelRef);
+
+    return () => ctx.revert(); // Cleanup on unmount to prevent sticking/freezing
   }, [bobAnimation, enterAnimation]);
 
   const handleMouseEnter = () => {

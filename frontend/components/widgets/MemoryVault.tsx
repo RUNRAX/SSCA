@@ -139,11 +139,6 @@ export function MemoryVault() {
       intensity="medium"
       enterAnimation
       className="glass-glow flex flex-col h-full rounded-3xl overflow-hidden p-6 relative"
-      style={{
-        background: 'rgba(15, 20, 35, 0.05)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-      }}
     >
       {/* ---- Header ---- */}
       <div className="flex justify-between items-center mb-4">

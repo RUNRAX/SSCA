@@ -16,24 +16,24 @@
   --color-danger: hsl(350, 80%, 55%);
   --color-success: hsl(150, 70%, 45%);
 
-  /* Liquid Glass System — Dark Transparent (Frosted) */
-  --glass-bg-light: hsla(230, 30%, 12%, 0.20);
-  --glass-bg-medium: hsla(230, 30%, 10%, 0.35);
-  --glass-bg-heavy: hsla(230, 30%, 8%, 0.45);
-  --glass-border: hsla(230, 30%, 60%, 0.18);
-  --glass-border-highlight: hsla(230, 40%, 70%, 0.25);
+  /* Liquid Glass System — Pure Blur (Like Navbar) */
+  --glass-bg-light: hsla(230, 30%, 15%, 0.02);
+  --glass-bg-medium: hsla(230, 30%, 15%, 0.05);
+  --glass-bg-heavy: hsla(230, 30%, 15%, 0.08);
+  --glass-border: hsla(230, 30%, 60%, 0.15);
+  --glass-border-highlight: hsla(230, 40%, 70%, 0.20);
   --glass-shadow:
     /* Outer depth shadow */
-    0 4px 30px 0 rgba(0, 0, 0, 0.35),
-    0 12px 50px 0 rgba(0, 0, 0, 0.20),
+    0 4px 30px 0 rgba(0, 0, 0, 0.25),
+    0 12px 50px 0 rgba(0, 0, 0, 0.15),
     /* Inner top highlight — subtle glass edge */
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
-    inset 0 0 0 0.5px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.03),
     /* Inner bottom shadow — 3D depth */
-    inset 0 -1px 0 0 rgba(0, 0, 0, 0.15);
-  --glass-blur-light: blur(24px) saturate(1.8);
-  --glass-blur-medium: blur(36px) saturate(2.0);
-  --glass-blur-heavy: blur(48px) saturate(2.2);
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.10);
+  --glass-blur-light: blur(8px) saturate(1.5);
+  --glass-blur-medium: blur(12px) saturate(1.8);
+  --glass-blur-heavy: blur(16px) saturate(2.0);
 
   /* Glow System — Enhanced */
   --glass-glow-blue: hsla(220, 90%, 65%, 0.25);

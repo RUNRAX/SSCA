@@ -24,12 +24,7 @@ export function Navbar() {
     <div className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 pt-3">
       <nav
         className="glass-panel glass-glow mx-auto max-w-7xl h-14 flex items-center justify-between px-5 md:px-6"
-        style={{
-          borderRadius: '18px',
-          background: 'rgba(15, 20, 35, 0.05)', // 5% opacity dark tint
-          backdropFilter: 'blur(12px)', // Reduced blur
-          WebkitBackdropFilter: 'blur(12px)',
-        }}
+        style={{ borderRadius: '18px' }}
       >
         {/* ── Left: Logo + Brand ── */}
         <div className="flex items-center gap-3">

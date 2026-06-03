@@ -30,14 +30,11 @@ export function AnimatedBackground() {
         />
       </div>
 
-      {/* ── Vignette + soft darken for text readability ── */}
+      {/* ── Subtle Vignette (removed black overlay) ── */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `
-            radial-gradient(ellipse at center, transparent 40%, rgba(5, 5, 20, 0.4) 100%),
-            linear-gradient(to bottom, rgba(5, 5, 20, 0.2) 0%, rgba(5, 5, 20, 0.15) 50%, rgba(5, 5, 20, 0.3) 100%)
-          `,
+          background: `radial-gradient(ellipse at center, transparent 60%, rgba(5, 5, 20, 0.2) 100%)`,
         }}
       />
 
