@@ -7,13 +7,48 @@ import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
 
 export default function ProfilePage() {
   // Mock data for UI layout
-  const [userProfile] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    purpose: 'Personal Cognitive Assistant',
+  const [isEditing, setIsEditing] = useState(false);
+  const [userProfile, setUserProfile] = useState({
+    name: '',
+    email: '',
+    purpose: '',
   });
-
   const [agentPersonality, setAgentPersonality] = useState('friendly');
+
+  // Load from local storage on mount
+  useEffect(() => {
+    const savedProfile = localStorage.getItem('ssca_user_profile');
+    const savedPersonality = localStorage.getItem('ssca_agent_personality');
+    
+    if (savedProfile) {
+      setUserProfile(JSON.parse(savedProfile));
+    } else {
+      // Default fallback
+      setUserProfile({
+        name: 'User',
+        email: 'user@example.com',
+        purpose: 'Personal Cognitive Assistant',
+      });
+    }
+    
+    if (savedPersonality) {
+      setAgentPersonality(savedPersonality);
+    }
+  }, []);
+
+  const handleProfileChange = (field: string, value: string) => {
+    setUserProfile(prev => ({ ...prev, [field]: value }));
+  };
+
+  const saveProfile = () => {
+    localStorage.setItem('ssca_user_profile', JSON.stringify(userProfile));
+    setIsEditing(false);
+  };
+
+  const handlePersonalityChange = (id: string) => {
+    setAgentPersonality(id);
+    localStorage.setItem('ssca_agent_personality', id);
+  };
 
   const personalities = [
     { id: 'friendly', name: 'Friendly', desc: 'Warm, approachable, and encouraging.' },
@@ -30,8 +65,19 @@ export default function ProfilePage() {
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
           
-          <main className="flex-1 max-w-5xl w-full mx-auto px-6 py-12 flex flex-col gap-10">
-            <h1 className="text-4xl font-extrabold tracking-tight mb-4">Profile Settings</h1>
+          <main className="flex-1 max-w-5xl w-full mx-auto px-6 pt-32 pb-12 flex flex-col gap-10">
+            <div className="flex items-center justify-between mb-4">
+              <h1 className="text-4xl font-extrabold tracking-tight">Profile Settings</h1>
+              {!isEditing ? (
+                <button onClick={() => setIsEditing(true)} className="text-sm font-semibold bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-colors">
+                  Edit Profile
+                </button>
+              ) : (
+                <button onClick={saveProfile} className="text-sm font-semibold bg-[#e83445] hover:bg-[#c32230] px-4 py-2 rounded-lg transition-colors shadow-lg shadow-red-500/20">
+                  Save Changes
+                </button>
+              )}
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
               
@@ -41,21 +87,48 @@ export default function ProfilePage() {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50 mix-blend-overlay pointer-events-none" />
                   
                   <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-500 to-cyan-500 mb-6 flex items-center justify-center text-2xl font-bold shadow-lg">
-                    {userProfile.name.charAt(0)}
+                    {userProfile.name ? userProfile.name.charAt(0).toUpperCase() : 'U'}
                   </div>
                   
-                  <div className="flex flex-col gap-4 relative z-10">
+                  <div className="flex flex-col gap-5 relative z-10">
                     <div>
-                      <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Full Name</label>
-                      <p className="text-lg font-medium">{userProfile.name}</p>
+                      <label className="text-xs font-semibold text-white/60 uppercase tracking-wider mb-1 block">Full Name</label>
+                      {isEditing ? (
+                        <input 
+                          type="text" 
+                          value={userProfile.name} 
+                          onChange={(e) => handleProfileChange('name', e.target.value)}
+                          className="w-full bg-white/5 border border-white/20 rounded-md px-3 py-2 focus:outline-none focus:border-cyan-400 transition-colors"
+                        />
+                      ) : (
+                        <p className="text-lg font-medium">{userProfile.name}</p>
+                      )}
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Linked Email</label>
-                      <p className="text-lg font-medium">{userProfile.email}</p>
+                      <label className="text-xs font-semibold text-white/60 uppercase tracking-wider mb-1 block">Linked Email</label>
+                      {isEditing ? (
+                        <input 
+                          type="email" 
+                          value={userProfile.email} 
+                          onChange={(e) => handleProfileChange('email', e.target.value)}
+                          className="w-full bg-white/5 border border-white/20 rounded-md px-3 py-2 focus:outline-none focus:border-cyan-400 transition-colors"
+                        />
+                      ) : (
+                        <p className="text-lg font-medium">{userProfile.email}</p>
+                      )}
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Purpose of Use</label>
-                      <p className="text-lg font-medium">{userProfile.purpose}</p>
+                      <label className="text-xs font-semibold text-white/60 uppercase tracking-wider mb-1 block">Purpose of Use</label>
+                      {isEditing ? (
+                        <input 
+                          type="text" 
+                          value={userProfile.purpose} 
+                          onChange={(e) => handleProfileChange('purpose', e.target.value)}
+                          className="w-full bg-white/5 border border-white/20 rounded-md px-3 py-2 focus:outline-none focus:border-cyan-400 transition-colors"
+                        />
+                      ) : (
+                        <p className="text-lg font-medium">{userProfile.purpose}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -73,7 +146,7 @@ export default function ProfilePage() {
                     {personalities.map((p) => (
                       <button
                         key={p.id}
-                        onClick={() => setAgentPersonality(p.id)}
+                        onClick={() => handlePersonalityChange(p.id)}
                         className={`text-left p-5 rounded-2xl border transition-all duration-300 flex flex-col gap-1 ${
                           agentPersonality === p.id 
                             ? 'bg-white/10 border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.1)]' 
@@ -97,7 +170,7 @@ export default function ProfilePage() {
           </main>
 
           {/* Footer Helpline */}
-          <footer className="w-full py-8 text-center text-white/50 border-t border-white/10 backdrop-blur-md bg-black/20">
+          <footer className="w-full py-8 text-center text-white/50 border-t border-white/10 backdrop-blur-md bg-black/20 mt-auto">
             <p className="text-sm">
               Need help or want to provide feedback? Contact me at <a href="mailto:helpline@example.com" className="text-white hover:underline font-medium transition-colors">helpline@example.com</a>
             </p>

@@ -1,78 +1,80 @@
-# Graph Report - D:\SSCA  (2026-06-04)
+# Graph Report - .  (2026-06-04)
 
 ## Corpus Check
-- 70 files · ~83,988 words
+- 59 files · ~87,207 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 195 nodes · 179 edges · 63 communities detected
+- 198 nodes · 180 edges · 65 communities detected
 - Extraction: 77% EXTRACTED · 23% INFERRED · 0% AMBIGUOUS · INFERRED: 42 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_CognitiveOrchestrator group|CognitiveOrchestrator group]]
-- [[_COMMUNITY_AuthResponse group|AuthResponse group]]
-- [[_COMMUNITY_memory.py group|memory.py group]]
-- [[_COMMUNITY_MemoryVault.tsx group|MemoryVault.tsx group]]
-- [[_COMMUNITY_test_chat_empty_query() group|test_chat_empty_query() group]]
-- [[_COMMUNITY_chat() group|chat() group]]
-- [[_COMMUNITY_get_current_user() group|get_current_user() group]]
-- [[_COMMUNITY_handleKeyDown() group|handleKeyDown() group]]
-- [[_COMMUNITY_ApiError group|ApiError group]]
-- [[_COMMUNITY_checkpoint_latest group|checkpoint_latest group]]
-- [[_COMMUNITY_Firebase group|Firebase group]]
-- [[_COMMUNITY_BaseSettings group|BaseSettings group]]
-- [[_COMMUNITY_auth_headers() group|auth_headers() group]]
-- [[_COMMUNITY_Northern group|Northern group]]
-- [[_COMMUNITY_layout.tsx group|layout.tsx group]]
-- [[_COMMUNITY_main.py group|main.py group]]
-- [[_COMMUNITY_security.py group|security.py group]]
-- [[_COMMUNITY_AuthProvider() group|AuthProvider() group]]
-- [[_COMMUNITY_RouteTransitionProvider.tsx group|RouteTransitionProvider.tsx group]]
-- [[_COMMUNITY_test_verify_invalid_firebase_token() group|test_verify_invalid_firebase_token() group]]
-- [[_COMMUNITY_test_list_memories_enforces_user_id() group|test_list_memories_enforces_user_id() group]]
-- [[_COMMUNITY_Dark group|Dark group]]
-- [[_COMMUNITY_check_dim() group|check_dim() group]]
-- [[_COMMUNITY_list_models() group|list_models() group]]
-- [[_COMMUNITY_test_embed.py group|test_embed.py group]]
-- [[_COMMUNITY_test_embed_all.py group|test_embed_all.py group]]
-- [[_COMMUNITY_layout.tsx group|layout.tsx group]]
-- [[_COMMUNITY_page.tsx group|page.tsx group]]
-- [[_COMMUNITY_page.tsx group|page.tsx group]]
-- [[_COMMUNITY_LoginForm.tsx group|LoginForm.tsx group]]
-- [[_COMMUNITY_SignupForm.tsx group|SignupForm.tsx group]]
-- [[_COMMUNITY_GlassPanel.tsx group|GlassPanel.tsx group]]
-- [[_COMMUNITY_GlassSkeleton.tsx group|GlassSkeleton.tsx group]]
-- [[_COMMUNITY_AnimatedBackground() group|AnimatedBackground() group]]
-- [[_COMMUNITY_BackgroundGradient() group|BackgroundGradient() group]]
-- [[_COMMUNITY_CollageGrid() group|CollageGrid() group]]
-- [[_COMMUNITY_Navbar.tsx group|Navbar.tsx group]]
-- [[_COMMUNITY_SpringDrag.tsx group|SpringDrag.tsx group]]
-- [[_COMMUNITY_PageTransition.tsx group|PageTransition.tsx group]]
-- [[_COMMUNITY_useAuth.ts group|useAuth.ts group]]
-- [[_COMMUNITY_useChat.ts group|useChat.ts group]]
-- [[_COMMUNITY_useMemories.ts group|useMemories.ts group]]
-- [[_COMMUNITY_useMousePosition.ts group|useMousePosition.ts group]]
-- [[_COMMUNITY_test_dist.py group|test_dist.py group]]
-- [[_COMMUNITY_next-env.d.ts group|next-env.d.ts group]]
-- [[_COMMUNITY_next.config.ts group|next.config.ts group]]
-- [[_COMMUNITY_tailwind.config.ts group|tailwind.config.ts group]]
-- [[_COMMUNITY_index.py group|index.py group]]
-- [[_COMMUNITY_page.tsx group|page.tsx group]]
-- [[_COMMUNITY___init__.py group|__init__.py group]]
-- [[_COMMUNITY___init__.py group|__init__.py group]]
-- [[_COMMUNITY___init__.py group|__init__.py group]]
-- [[_COMMUNITY_LiquidDistortion.tsx group|LiquidDistortion.tsx group]]
-- [[_COMMUNITY_ToastProvider.tsx group|ToastProvider.tsx group]]
-- [[_COMMUNITY_MarkdownRenderer.tsx group|MarkdownRenderer.tsx group]]
-- [[_COMMUNITY_constants.ts group|constants.ts group]]
-- [[_COMMUNITY_types.ts group|types.ts group]]
-- [[_COMMUNITY_Red group|Red group]]
-- [[_COMMUNITY_Document group|Document group]]
-- [[_COMMUNITY_Globe group|Globe group]]
-- [[_COMMUNITY_Next.js group|Next.js group]]
-- [[_COMMUNITY_Vercel group|Vercel group]]
-- [[_COMMUNITY_Window group|Window group]]
+- [[_COMMUNITY_Community 0|Community 0]]
+- [[_COMMUNITY_Community 1|Community 1]]
+- [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 4|Community 4]]
+- [[_COMMUNITY_Community 5|Community 5]]
+- [[_COMMUNITY_Community 6|Community 6]]
+- [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
+- [[_COMMUNITY_Community 10|Community 10]]
+- [[_COMMUNITY_Community 11|Community 11]]
+- [[_COMMUNITY_Community 12|Community 12]]
+- [[_COMMUNITY_Community 13|Community 13]]
+- [[_COMMUNITY_Community 14|Community 14]]
+- [[_COMMUNITY_Community 15|Community 15]]
+- [[_COMMUNITY_Community 16|Community 16]]
+- [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 18|Community 18]]
+- [[_COMMUNITY_Community 19|Community 19]]
+- [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
+- [[_COMMUNITY_Community 22|Community 22]]
+- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 26|Community 26]]
+- [[_COMMUNITY_Community 27|Community 27]]
+- [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 29|Community 29]]
+- [[_COMMUNITY_Community 30|Community 30]]
+- [[_COMMUNITY_Community 31|Community 31]]
+- [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 33|Community 33]]
+- [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 36|Community 36]]
+- [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 39|Community 39]]
+- [[_COMMUNITY_Community 40|Community 40]]
+- [[_COMMUNITY_Community 41|Community 41]]
+- [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
+- [[_COMMUNITY_Community 44|Community 44]]
+- [[_COMMUNITY_Community 45|Community 45]]
+- [[_COMMUNITY_Community 46|Community 46]]
+- [[_COMMUNITY_Community 47|Community 47]]
+- [[_COMMUNITY_Community 48|Community 48]]
+- [[_COMMUNITY_Community 49|Community 49]]
+- [[_COMMUNITY_Community 50|Community 50]]
+- [[_COMMUNITY_Community 51|Community 51]]
+- [[_COMMUNITY_Community 52|Community 52]]
+- [[_COMMUNITY_Community 53|Community 53]]
+- [[_COMMUNITY_Community 54|Community 54]]
+- [[_COMMUNITY_Community 55|Community 55]]
+- [[_COMMUNITY_Community 56|Community 56]]
+- [[_COMMUNITY_Community 57|Community 57]]
+- [[_COMMUNITY_Community 58|Community 58]]
+- [[_COMMUNITY_Community 59|Community 59]]
+- [[_COMMUNITY_Community 60|Community 60]]
+- [[_COMMUNITY_Community 61|Community 61]]
+- [[_COMMUNITY_Community 62|Community 62]]
+- [[_COMMUNITY_Community 63|Community 63]]
+- [[_COMMUNITY_Community 64|Community 64]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `VectorStoreService` - 16 edges
@@ -103,352 +105,364 @@
 
 ## Communities
 
-### Community 0 - "CognitiveOrchestrator group"
+### Community 0 - "Community 0"
 Cohesion: 0.11
 Nodes (11): CognitiveOrchestrator, Full RAG pipeline (SSE stream): yields chunks as they are generated., Retrieve relevant memories and format as context block., Store the conversation turn as a new memory., Full RAG pipeline (single response): embed query → retrieve memories → generate, List all memories for the current user., Delete a specific memory. Enforces isolation by verifying ownership., Generate embedding vector for a text string. Runs in a threadpool to avoid block (+3 more)
 
-### Community 1 - "AuthResponse group"
+### Community 1 - "Community 1"
 Cohesion: 0.31
 Nodes (11): AuthResponse, get_me(), login(), LoginRequest, Register a new user via Firebase Admin., Authenticate via Firebase REST API (Identity Toolkit) to get an ID token., Return current authenticated user info., signup() (+3 more)
 
-### Community 2 - "memory.py group"
+### Community 2 - "Community 2"
 Cohesion: 0.33
 Nodes (9): create_memory(), delete_memory(), list_memories(), MemoryCreateRequest, MemoryListResponse, MemoryResponse, Store a new memory with vector embedding., List all memories for the authenticated user. (+1 more)
 
-### Community 3 - "MemoryVault.tsx group"
+### Community 3 - "Community 3"
 Cohesion: 0.22
 Nodes (0): 
 
-### Community 4 - "test_chat_empty_query() group"
+### Community 4 - "Community 4"
 Cohesion: 0.25
 Nodes (0): 
 
-### Community 5 - "chat() group"
+### Community 5 - "Community 5"
 Cohesion: 0.4
 Nodes (4): chat(), ChatRequest, ChatResponse, RAG-powered chat endpoint. Retrieves user memories, generates response.
 
-### Community 6 - "get_current_user() group"
+### Community 6 - "Community 6"
 Cohesion: 0.4
 Nodes (4): get_current_user(), get_firestore_client(), Extract and verify the Firebase JWT. Returns the decoded payload., Get the Firestore client for the request.     Tenant isolation is enforced in th
 
-### Community 7 - "handleKeyDown() group"
+### Community 7 - "Community 7"
 Cohesion: 0.5
 Nodes (2): handleKeyDown(), handleSubmit()
 
-### Community 8 - "ApiError group"
+### Community 8 - "Community 8"
 Cohesion: 0.5
 Nodes (3): ApiError, apiFetch(), getApiUrl()
 
-### Community 9 - "checkpoint_latest group"
+### Community 9 - "Community 9"
 Cohesion: 0.5
 Nodes (5): checkpoint_latest, Checkpoint Protocol, graphify_ssca, Token Saving, .agent_plans/task.md
 
-### Community 10 - "Firebase group"
+### Community 10 - "Community 10"
 Cohesion: 0.4
 Nodes (5): Firebase Service Account JSON, Next.js Frontend, Python Requirements, Self-Sovereign Cognitive API, Firestore Vector Index
 
-### Community 11 - "BaseSettings group"
+### Community 11 - "Community 11"
 Cohesion: 0.67
 Nodes (3): BaseSettings, get_settings(), Settings
 
-### Community 12 - "auth_headers() group"
+### Community 12 - "Community 12"
 Cohesion: 0.5
 Nodes (0): 
 
-### Community 13 - "Northern group"
+### Community 13 - "Community 13"
 Cohesion: 0.5
 Nodes (4): Northern Lights Background Image, Aurora Borealis, Starry Night Sky, Winter Landscape
 
-### Community 14 - "layout.tsx group"
+### Community 14 - "Community 14"
 Cohesion: 0.67
 Nodes (0): 
 
-### Community 15 - "main.py group"
+### Community 15 - "Community 15"
 Cohesion: 1.0
 Nodes (2): create_app(), initialize_firebase()
 
-### Community 16 - "security.py group"
+### Community 16 - "Community 16"
 Cohesion: 0.67
 Nodes (2): Verify a Firebase ID Token using the Admin SDK.     Returns the decoded token pa, verify_firebase_id_token()
 
-### Community 17 - "AuthProvider() group"
+### Community 17 - "Community 17"
 Cohesion: 0.67
 Nodes (0): 
 
-### Community 18 - "RouteTransitionProvider.tsx group"
+### Community 18 - "Community 18"
 Cohesion: 0.67
 Nodes (0): 
 
-### Community 19 - "test_verify_invalid_firebase_token() group"
+### Community 19 - "Community 19"
 Cohesion: 0.67
 Nodes (0): 
 
-### Community 20 - "test_list_memories_enforces_user_id() group"
+### Community 20 - "Community 20"
 Cohesion: 0.67
 Nodes (0): 
 
-### Community 21 - "Dark group"
+### Community 21 - "Community 21"
 Cohesion: 0.67
 Nodes (3): Dark Theme Background, Neon Rings, Background Dashboard Image
 
-### Community 22 - "check_dim() group"
+### Community 22 - "Community 22"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 23 - "list_models() group"
+### Community 23 - "Community 23"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 24 - "test_embed.py group"
+### Community 24 - "Community 24"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 25 - "test_embed_all.py group"
+### Community 25 - "Community 25"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 26 - "layout.tsx group"
+### Community 26 - "Community 26"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 27 - "page.tsx group"
+### Community 27 - "Community 27"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 28 - "page.tsx group"
+### Community 28 - "Community 28"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 29 - "LoginForm.tsx group"
+### Community 29 - "Community 29"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 30 - "SignupForm.tsx group"
+### Community 30 - "Community 30"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 31 - "GlassPanel.tsx group"
+### Community 31 - "Community 31"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 32 - "GlassSkeleton.tsx group"
+### Community 32 - "Community 32"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 33 - "AnimatedBackground() group"
+### Community 33 - "Community 33"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 34 - "BackgroundGradient() group"
+### Community 34 - "Community 34"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 35 - "CollageGrid() group"
+### Community 35 - "Community 35"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 36 - "Navbar.tsx group"
+### Community 36 - "Community 36"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 37 - "SpringDrag.tsx group"
+### Community 37 - "Community 37"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 38 - "PageTransition.tsx group"
+### Community 38 - "Community 38"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 39 - "useAuth.ts group"
+### Community 39 - "Community 39"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 40 - "useChat.ts group"
+### Community 40 - "Community 40"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 41 - "useMemories.ts group"
+### Community 41 - "Community 41"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 42 - "useMousePosition.ts group"
+### Community 42 - "Community 42"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 43 - "test_dist.py group"
+### Community 43 - "Community 43"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 44 - "next-env.d.ts group"
+### Community 44 - "Community 44"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 45 - "next.config.ts group"
+### Community 45 - "Community 45"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 46 - "tailwind.config.ts group"
+### Community 46 - "Community 46"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 47 - "index.py group"
+### Community 47 - "Community 47"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 48 - "page.tsx group"
+### Community 48 - "Community 48"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 49 - "__init__.py group"
+### Community 49 - "Community 49"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 50 - "__init__.py group"
+### Community 50 - "Community 50"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 51 - "__init__.py group"
+### Community 51 - "Community 51"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 52 - "LiquidDistortion.tsx group"
+### Community 52 - "Community 52"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 53 - "ToastProvider.tsx group"
+### Community 53 - "Community 53"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 54 - "MarkdownRenderer.tsx group"
+### Community 54 - "Community 54"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 55 - "constants.ts group"
+### Community 55 - "Community 55"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 56 - "types.ts group"
+### Community 56 - "Community 56"
 Cohesion: 1.0
 Nodes (0): 
 
-### Community 57 - "Red group"
+### Community 57 - "Community 57"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 58 - "Community 58"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 59 - "Community 59"
 Cohesion: 1.0
 Nodes (1): Red Abstract Fur Background Image
 
-### Community 58 - "Document group"
+### Community 60 - "Community 60"
 Cohesion: 1.0
 Nodes (1): Document Icon (file.svg)
 
-### Community 59 - "Globe group"
+### Community 61 - "Community 61"
 Cohesion: 1.0
 Nodes (1): Globe SVG Asset
 
-### Community 60 - "Next.js group"
+### Community 62 - "Community 62"
 Cohesion: 1.0
 Nodes (1): Next.js Logo
 
-### Community 61 - "Vercel group"
+### Community 63 - "Community 63"
 Cohesion: 1.0
 Nodes (1): Vercel Logo
 
-### Community 62 - "Window group"
+### Community 64 - "Community 64"
 Cohesion: 1.0
 Nodes (1): Window Icon
 
 ## Knowledge Gaps
 - **25 isolated node(s):** `Extract and verify the Firebase JWT. Returns the decoded payload.`, `Get the Firestore client for the request.     Tenant isolation is enforced in th`, `Verify a Firebase ID Token using the Admin SDK.     Returns the decoded token pa`, `Generate embedding vector for a text string. Runs in a threadpool to avoid block`, `Embed and store a memory.          In Firestore, we explicitly set the user_id t` (+20 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `check_dim() group`** (2 nodes): `check_dim()`, `check_dim.py`
+- **Thin community `Community 22`** (2 nodes): `check_dim()`, `check_dim.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `list_models() group`** (2 nodes): `list_models()`, `list_models.py`
+- **Thin community `Community 23`** (2 nodes): `list_models()`, `list_models.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `test_embed.py group`** (2 nodes): `test_embed.py`, `test_embed()`
+- **Thin community `Community 24`** (2 nodes): `test_embed.py`, `test_embed()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `test_embed_all.py group`** (2 nodes): `test_embed_all.py`, `test_embed()`
+- **Thin community `Community 25`** (2 nodes): `test_embed_all.py`, `test_embed()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `layout.tsx group`** (2 nodes): `layout.tsx`, `RootLayout()`
+- **Thin community `Community 26`** (2 nodes): `layout.tsx`, `RootLayout()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `page.tsx group`** (2 nodes): `page.tsx`, `Home()`
+- **Thin community `Community 27`** (2 nodes): `page.tsx`, `Home()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `page.tsx group`** (2 nodes): `page.tsx`, `LoginPage()`
+- **Thin community `Community 28`** (2 nodes): `page.tsx`, `ProfilePage()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `LoginForm.tsx group`** (2 nodes): `LoginForm.tsx`, `LoginForm()`
+- **Thin community `Community 29`** (2 nodes): `LoginForm.tsx`, `LoginForm()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `SignupForm.tsx group`** (2 nodes): `SignupForm.tsx`, `SignupForm()`
+- **Thin community `Community 30`** (2 nodes): `SignupForm.tsx`, `SignupForm()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `GlassPanel.tsx group`** (2 nodes): `GlassPanel.tsx`, `GlassPanel()`
+- **Thin community `Community 31`** (2 nodes): `GlassPanel.tsx`, `GlassPanel()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `GlassSkeleton.tsx group`** (2 nodes): `GlassSkeleton.tsx`, `GlassSkeleton()`
+- **Thin community `Community 32`** (2 nodes): `GlassSkeleton.tsx`, `GlassSkeleton()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `AnimatedBackground() group`** (2 nodes): `AnimatedBackground()`, `AnimatedBackground.tsx`
+- **Thin community `Community 33`** (2 nodes): `AnimatedBackground()`, `AnimatedBackground.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `BackgroundGradient() group`** (2 nodes): `BackgroundGradient()`, `BackgroundGradient.tsx`
+- **Thin community `Community 34`** (2 nodes): `BackgroundGradient()`, `BackgroundGradient.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `CollageGrid() group`** (2 nodes): `CollageGrid()`, `CollageGrid.tsx`
+- **Thin community `Community 35`** (2 nodes): `CollageGrid()`, `CollageGrid.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Navbar.tsx group`** (2 nodes): `Navbar.tsx`, `getInitials()`
+- **Thin community `Community 36`** (2 nodes): `Navbar.tsx`, `getInitials()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `SpringDrag.tsx group`** (2 nodes): `SpringDrag.tsx`, `SpringDrag()`
+- **Thin community `Community 37`** (2 nodes): `SpringDrag.tsx`, `SpringDrag()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `PageTransition.tsx group`** (2 nodes): `PageTransition.tsx`, `PageTransition()`
+- **Thin community `Community 38`** (2 nodes): `PageTransition.tsx`, `PageTransition()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `useAuth.ts group`** (2 nodes): `useAuth.ts`, `useAuth()`
+- **Thin community `Community 39`** (2 nodes): `HorizontalLoader.tsx`, `HorizontalLoader()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `useChat.ts group`** (2 nodes): `useChat.ts`, `useChat()`
+- **Thin community `Community 40`** (2 nodes): `useAuth.ts`, `useAuth()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `useMemories.ts group`** (2 nodes): `useMemories.ts`, `useMemories()`
+- **Thin community `Community 41`** (2 nodes): `useChat.ts`, `useChat()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `useMousePosition.ts group`** (2 nodes): `useMousePosition.ts`, `useMousePosition()`
+- **Thin community `Community 42`** (2 nodes): `useMemories.ts`, `useMemories()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `test_dist.py group`** (1 nodes): `test_dist.py`
+- **Thin community `Community 43`** (2 nodes): `useMousePosition.ts`, `useMousePosition()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `next-env.d.ts group`** (1 nodes): `next-env.d.ts`
+- **Thin community `Community 44`** (1 nodes): `test_dist.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `next.config.ts group`** (1 nodes): `next.config.ts`
+- **Thin community `Community 45`** (1 nodes): `next-env.d.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `tailwind.config.ts group`** (1 nodes): `tailwind.config.ts`
+- **Thin community `Community 46`** (1 nodes): `next.config.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `index.py group`** (1 nodes): `index.py`
+- **Thin community `Community 47`** (1 nodes): `tailwind.config.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `page.tsx group`** (1 nodes): `page.tsx`
+- **Thin community `Community 48`** (1 nodes): `index.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `__init__.py group`** (1 nodes): `__init__.py`
+- **Thin community `Community 49`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `__init__.py group`** (1 nodes): `__init__.py`
+- **Thin community `Community 50`** (1 nodes): `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `__init__.py group`** (1 nodes): `__init__.py`
+- **Thin community `Community 51`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `LiquidDistortion.tsx group`** (1 nodes): `LiquidDistortion.tsx`
+- **Thin community `Community 52`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `ToastProvider.tsx group`** (1 nodes): `ToastProvider.tsx`
+- **Thin community `Community 53`** (1 nodes): `__init__.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `MarkdownRenderer.tsx group`** (1 nodes): `MarkdownRenderer.tsx`
+- **Thin community `Community 54`** (1 nodes): `LiquidDistortion.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `constants.ts group`** (1 nodes): `constants.ts`
+- **Thin community `Community 55`** (1 nodes): `ToastProvider.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `types.ts group`** (1 nodes): `types.ts`
+- **Thin community `Community 56`** (1 nodes): `MarkdownRenderer.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Red group`** (1 nodes): `Red Abstract Fur Background Image`
+- **Thin community `Community 57`** (1 nodes): `constants.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Document group`** (1 nodes): `Document Icon (file.svg)`
+- **Thin community `Community 58`** (1 nodes): `types.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Globe group`** (1 nodes): `Globe SVG Asset`
+- **Thin community `Community 59`** (1 nodes): `Red Abstract Fur Background Image`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Next.js group`** (1 nodes): `Next.js Logo`
+- **Thin community `Community 60`** (1 nodes): `Document Icon (file.svg)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Vercel group`** (1 nodes): `Vercel Logo`
+- **Thin community `Community 61`** (1 nodes): `Globe SVG Asset`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Window group`** (1 nodes): `Window Icon`
+- **Thin community `Community 62`** (1 nodes): `Next.js Logo`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 63`** (1 nodes): `Vercel Logo`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 64`** (1 nodes): `Window Icon`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `VectorStoreService` connect `CognitiveOrchestrator group` to `memory.py group`, `chat() group`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
-- **Why does `RAG-powered chat endpoint. Retrieves user memories, generates response.` connect `chat() group` to `CognitiveOrchestrator group`?**
+- **Why does `VectorStoreService` connect `Community 0` to `Community 2`, `Community 5`?**
+  _High betweenness centrality (0.042) - this node is a cross-community bridge._
+- **Why does `RAG-powered chat endpoint. Retrieves user memories, generates response.` connect `Community 5` to `Community 0`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `CognitiveOrchestrator` connect `CognitiveOrchestrator group` to `chat() group`?**
+- **Why does `CognitiveOrchestrator` connect `Community 0` to `Community 5`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `VectorStoreService` (e.g. with `RAG-powered chat endpoint. Retrieves user memories, generates response.` and `Store a new memory with vector embedding.`) actually correct?**
   _`VectorStoreService` has 9 INFERRED edges - model-reasoned connections that need verification._
