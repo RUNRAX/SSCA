@@ -20,11 +20,7 @@ export default function LoginPage() {
     }
   }, [isAuthenticated, isLoading, router]);
 
-  if (isLoading || isAuthenticated) {
-    return <div className="min-h-screen flex items-center justify-center bg-[#0a0515]">
-      <div className="animate-pulse text-white/50">Loading...</div>
-    </div>;
-  }
+  // Remove the old Loading block so the main UI loads behind the HorizontalLoader immediately
 
   return (
       <main className="min-h-screen w-full relative flex items-center justify-center bg-[#0a0515] overflow-hidden">
