@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageTransition } from '@/components/transitions/PageTransition';
 import { Navbar } from '@/components/layout/Navbar';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
