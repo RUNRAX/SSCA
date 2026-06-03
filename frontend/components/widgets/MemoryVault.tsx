@@ -63,14 +63,14 @@ function DropdownMenu({ coords, currentCategory, onSelect }: DropdownMenuProps) 
         bottom: coords.bottom,
         left: coords.left,
         width: coords.width,
-        /* Dark frosted glass background — visible blur */
-        background: 'rgba(12, 14, 28, 0.75)',
-        backdropFilter: 'blur(40px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+        /* Match AIChatInterface glass style */
+        background: 'rgba(15, 20, 35, 0.05)',
+        backdropFilter: 'blur(48px) saturate(2.2)',
+        WebkitBackdropFilter: 'blur(48px) saturate(2.2)',
         borderRadius: '14px',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
         boxShadow:
-          '0 20px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.08), inset 0 0 0 0.5px rgba(255, 255, 255, 0.04)',
+          '0 4px 30px 0 rgba(0, 0, 0, 0.35), 0 12px 50px 0 rgba(0, 0, 0, 0.20), inset 0 1px 0 0 rgba(255, 255, 255, 0.08), inset 0 0 0 0.5px rgba(255, 255, 255, 0.05), inset 0 -1px 0 0 rgba(0, 0, 0, 0.15)',
         overflow: 'hidden',
       }}
     >
