@@ -56,10 +56,11 @@ export default function DashboardPage() {
   }, [ready]);
 
   return (
-    <PageTransition>
+    <>
       {showLoader && (
         <HorizontalLoader color="bg-blue-500" duration={3.5} onComplete={() => setShowLoader(false)} />
       )}
+      <PageTransition>
       <main ref={containerRef} className="min-h-screen w-full relative pt-28 pb-8 px-4 md:px-6 max-w-7xl mx-auto">
         
         <div className="mb-8 dashboard-element opacity-0">
@@ -81,5 +82,6 @@ export default function DashboardPage() {
 
       </main>
     </PageTransition>
+    </>
   );
 }

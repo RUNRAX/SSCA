@@ -23,11 +23,11 @@ export default function LoginPage() {
   // Remove the old Loading block so the main UI loads behind the HorizontalLoader immediately
 
   return (
+    <>
+      {showLoader && (
+        <HorizontalLoader color="bg-white" duration={3.5} onComplete={() => setShowLoader(false)} />
+      )}
       <main className="min-h-screen w-full relative flex items-center justify-center bg-[#0a0515] overflow-hidden">
-        
-        {showLoader && (
-          <HorizontalLoader color="bg-white" duration={3.5} onComplete={() => setShowLoader(false)} />
-        )}
 
         {/* Video Background */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-black">
@@ -105,5 +105,6 @@ export default function LoginPage() {
 
         </div>
       </main>
+    </>
   );
 }
