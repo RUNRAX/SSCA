@@ -64,9 +64,9 @@ function DropdownMenu({ coords, currentCategory, onSelect }: DropdownMenuProps) 
         left: coords.left,
         width: coords.width,
         /* Match AIChatInterface glass style */
-        background: 'rgba(15, 20, 35, 0.05)',
-        backdropFilter: 'blur(48px) saturate(2.2)',
-        WebkitBackdropFilter: 'blur(48px) saturate(2.2)',
+        background: 'rgba(15, 20, 35, 0.02)',
+        backdropFilter: 'blur(24px) saturate(1.4)',
+        WebkitBackdropFilter: 'blur(24px) saturate(1.4)',
         borderRadius: '14px',
         border: '1px solid rgba(255, 255, 255, 0.08)',
         boxShadow:
