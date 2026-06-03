@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useMemo, useRef, useCallback, useEffect } from 'react';
 import gsap from 'gsap';
 import { Search, X, Plus, RefreshCw, Download, Trash2, ChevronDown, Brain } from 'lucide-react';
 import { GlassPanel } from '@/components/glass/GlassPanel';
