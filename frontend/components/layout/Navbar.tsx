@@ -43,12 +43,10 @@ export function Navbar() {
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, var(--color-bg-base) 0%, rgba(15, 20, 35, 0.2) 65%, transparent 100%)' }} />
       </div>
       <nav
-        className="glass-panel glass-glow mx-auto max-w-7xl h-14 flex items-center justify-between px-5 md:px-6 pointer-events-auto relative"
+        className="ios-liquid-glass mx-auto max-w-7xl h-14 flex items-center justify-between px-5 md:px-6 pointer-events-auto relative"
         style={{
           borderRadius: '18px',
-          background: 'rgba(15, 20, 35, 0.05)', // 5% opacity dark tint
-          backdropFilter: 'blur(0px)', // No blur
-          WebkitBackdropFilter: 'blur(0px)',
+          background: 'rgba(15, 20, 35, 0.05)', // 5% opacity dark tint over the glass
         }}
       >
         {/* ── Left: Logo + Brand ── */}
