@@ -53,7 +53,6 @@ export function AIChatInterface() {
     <GlassPanel
       intensity="heavy"
       className="flex flex-col h-full rounded-3xl overflow-hidden p-6 glass-glow"
-      enterAnimation
       style={{
         background: 'rgba(15, 20, 35, 0.05)',
         backdropFilter: 'blur(5px)',

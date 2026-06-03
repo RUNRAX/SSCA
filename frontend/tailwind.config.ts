@@ -12,7 +12,20 @@ const config: Config = {
         'accent-teal': 'var(--color-accent-teal)',
         'accent-blue': 'var(--color-accent-blue)',
         'accent-purple': 'var(--color-accent-purple)',
-      }
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        shimmer: {
+          '100%': { transform: 'translateX(100%)' },
+        }
+      },
+      animation: {
+        'fade-in': 'fade-in 0.5s ease-out forwards',
+        shimmer: 'shimmer 2s infinite',
+      },
     },
   },
   plugins: [],

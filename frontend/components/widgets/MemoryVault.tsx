@@ -4,6 +4,7 @@ import React, { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import gsap from 'gsap';
 import { Search, X, Plus, RefreshCw, Download, Trash2, ChevronDown, Brain } from 'lucide-react';
 import { GlassPanel } from '@/components/glass/GlassPanel';
+import { GlassSkeleton } from '@/components/glass/GlassSkeleton';
 import { useAuthContext } from '@/components/auth/AuthProvider';
 import { useMemories } from '@/hooks/useMemories';
 
@@ -161,7 +162,6 @@ export function MemoryVault() {
   return (
     <GlassPanel
       intensity="medium"
-      enterAnimation
       className="glass-glow flex flex-col h-full rounded-3xl p-6 relative"
       style={{
         background: 'rgba(15, 20, 35, 0.05)',
@@ -324,8 +324,10 @@ export function MemoryVault() {
       {/* ---- Memory List ---- */}
       <div className={`flex-1 pr-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth space-y-3 ${filteredMemories.length > 0 ? 'overflow-y-auto' : 'overflow-hidden'}`}>
         {isLoading && memories.length === 0 ? (
-          <div className="flex justify-center items-center h-32">
-            <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+          <div className="flex flex-col gap-3">
+            {[1, 2, 3].map((i) => (
+              <GlassSkeleton key={i} className="w-full h-28" intensity="light" />
+            ))}
           </div>
         ) : filteredMemories.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-14 opacity-60">
