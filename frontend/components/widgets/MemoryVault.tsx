@@ -141,8 +141,8 @@ export function MemoryVault() {
       className="glass-glow flex flex-col h-full rounded-3xl overflow-hidden p-6 relative"
       style={{
         background: 'rgba(15, 20, 35, 0.05)',
-        backdropFilter: 'blur(36px) saturate(2.2)',
-        WebkitBackdropFilter: 'blur(36px) saturate(2.2)',
+        backdropFilter: 'blur(5px) saturate(2.2)',
+        WebkitBackdropFilter: 'blur(5px) saturate(2.2)',
       }}
     >
       {/* ---- Header ---- */}

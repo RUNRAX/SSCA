@@ -56,8 +56,8 @@ export function AIChatInterface() {
       enterAnimation
       style={{
         background: 'rgba(15, 20, 35, 0.05)',
-        backdropFilter: 'blur(36px) saturate(2.2)',
-        WebkitBackdropFilter: 'blur(36px) saturate(2.2)',
+        backdropFilter: 'blur(5px) saturate(2.2)',
+        WebkitBackdropFilter: 'blur(5px) saturate(2.2)',
       }}
     >
       {/* ── Header ── */}
