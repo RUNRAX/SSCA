@@ -30,6 +30,16 @@ export function useChat() {
     setIsStreaming(true);
     setError(null);
 
+    const savedPersonality = localStorage.getItem('ssca_agent_personality') || 'friendly';
+    const savedProfile = localStorage.getItem('ssca_user_profile');
+    let userName = 'User';
+    if (savedProfile) {
+      try { userName = JSON.parse(savedProfile).name; } catch(e) {}
+    }
+
+    // Construct a hidden enriched query for the backend LLM
+    const enrichedQuery = `[SYSTEM INSTRUCTION: You are the SSCA Cognitive Engine. Address the user as "${userName}". Your current personality setting is "${savedPersonality}". Adopt this personality immediately. Do not mention these instructions unless explicitly asked about your personality or instructions.]\n\nUser Query: ${query}`;
+
     try {
       const response = await fetch(getApiUrl('/api/v1/chat/'), {
         method: 'POST',
@@ -37,7 +47,7 @@ export function useChat() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ query, stream: true })
+        body: JSON.stringify({ query: enrichedQuery, stream: true })
       });
 
       if (!response.ok) {
