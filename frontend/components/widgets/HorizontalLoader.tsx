@@ -40,7 +40,7 @@ export function HorizontalLoader({ color = 'bg-white', duration = 3.5, onComplet
   if (isDone) return null;
 
   return (
-    <div className="loader-container fixed inset-0 w-full h-screen z-[99999] flex flex-col items-center justify-center bg-[#0a0515]">
+    <div className="loader-container fixed inset-0 w-full h-screen z-[99999] flex flex-col items-center justify-center bg-black/40 backdrop-blur-[60px] border border-white/[0.05] shadow-[0_0_80px_rgba(0,0,0,0.8)]">
       <div className="w-64 h-1 bg-white/10 rounded-full overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.05)]">
         <div className={`loader-progress h-full w-0 rounded-full shadow-[0_0_20px_inherit] ${color}`} />
       </div>
