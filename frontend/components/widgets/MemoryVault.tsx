@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useRef, useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import gsap from 'gsap';
 import { Search, X, Plus, RefreshCw, Download, Trash2, ChevronDown, Brain } from 'lucide-react';
 import { GlassPanel } from '@/components/glass/GlassPanel';
@@ -48,20 +49,28 @@ export function MemoryVault() {
   const [newCategory, setNewCategory] = useState('conversation');
   const [isCreating, setIsCreating] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [dropdownCoords, setDropdownCoords] = useState({ bottom: 0, left: 0, width: 0 });
 
   // --- Refs ---
   const addFormRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // --- Close dropdown on click outside ---
+  // --- Close dropdown on click outside or scroll ---
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setIsDropdownOpen(false);
       }
     }
+    function handleScroll() {
+      setIsDropdownOpen(false);
+    }
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll, true); // Use capture to catch all scroll events
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll, true);
+    };
   }, []);
 
   // --- Filtered memories ---
@@ -228,7 +237,15 @@ export function MemoryVault() {
               {/* Custom Dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <button
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  onClick={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    setDropdownCoords({
+                      bottom: window.innerHeight - rect.top + 8, // 8px spacing
+                      left: rect.left,
+                      width: Math.max(176, rect.width) // w-44 is 176px
+                    });
+                    setIsDropdownOpen(!isDropdownOpen);
+                  }}
                   className="flex items-center gap-2 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 hover:border-white/20 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none transition-all duration-200"
                 >
                   <span className={`w-2 h-2 rounded-full ${CATEGORY_MAP[newCategory].bg.replace('/20', '')} shadow-[0_0_8px_currentColor]`} />
@@ -236,8 +253,15 @@ export function MemoryVault() {
                   <ChevronDown className={`w-3.5 h-3.5 text-white/50 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
-                {isDropdownOpen && (
-                  <div className="absolute bottom-full left-0 mb-2 w-44 ios-liquid-glass border border-white/10 rounded-xl overflow-hidden z-[100] animate-in shadow-xl origin-bottom-left">
+                {isDropdownOpen && typeof document !== 'undefined' && createPortal(
+                  <div 
+                    className="fixed ios-liquid-glass border border-white/10 rounded-xl overflow-hidden z-[9999] animate-in shadow-xl origin-bottom-left"
+                    style={{
+                      bottom: dropdownCoords.bottom,
+                      left: dropdownCoords.left,
+                      width: dropdownCoords.width
+                    }}
+                  >
                     <div className="p-1.5 flex flex-col gap-1">
                       {CATEGORY_KEYS.map((key) => (
                         <button
@@ -253,7 +277,8 @@ export function MemoryVault() {
                         </button>
                       ))}
                     </div>
-                  </div>
+                  </div>,
+                  document.body
                 )}
               </div>
 
