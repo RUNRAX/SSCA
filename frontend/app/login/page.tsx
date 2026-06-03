@@ -31,17 +31,15 @@ export default function LoginPage() {
         
         {/* Pure CSS Dynamic Aurora Background */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-[#07040f]">
-          {/* Base ambient gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#07040f] via-purple-900/10 to-cyan-900/10" />
           
-          {/* Moving Aurora Lights */}
-          <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-purple-600/30 blur-[120px] mix-blend-screen animate-[auroraMove_20s_ease-in-out_infinite_alternate]" />
-          <div className="absolute top-[10%] right-[-10%] w-[60%] h-[80%] rounded-full bg-cyan-400/20 blur-[130px] mix-blend-screen animate-[auroraMove_28s_ease-in-out_infinite_alternate-reverse]" />
-          <div className="absolute bottom-[-20%] left-[20%] w-[80%] h-[60%] rounded-full bg-blue-500/20 blur-[140px] mix-blend-screen animate-[auroraMove_24s_ease-in-out_infinite_alternate]" />
+          {/* Moving Aurora Lights - Vibrant and high opacity */}
+          <div className="absolute top-[-10%] left-[0%] w-[50%] h-[50%] rounded-full bg-[#8b5cf6] blur-[120px] opacity-60 mix-blend-screen animate-[auroraMove_20s_ease-in-out_infinite_alternate]" />
+          <div className="absolute top-[10%] right-[-5%] w-[55%] h-[60%] rounded-full bg-[#10b981] blur-[130px] opacity-50 mix-blend-screen animate-[auroraMove_28s_ease-in-out_infinite_alternate-reverse]" />
+          <div className="absolute bottom-[-10%] left-[15%] w-[60%] h-[50%] rounded-full bg-[#06b6d4] blur-[120px] opacity-60 mix-blend-screen animate-[auroraMove_24s_ease-in-out_infinite_alternate]" />
+          <div className="absolute top-[30%] left-[40%] w-[40%] h-[40%] rounded-full bg-[#3b82f6] blur-[100px] opacity-50 mix-blend-screen animate-[auroraMove_30s_ease-in-out_infinite_alternate]" />
           
-          {/* Gradient overlay for readability and depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07040f] via-transparent to-[#07040f]/40 opacity-90" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07040f]/90 via-[#07040f]/50 to-transparent" />
+          {/* Gradient overlay - only darken the left side slightly for text readability, let the lights shine on the right! */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07040f]/90 via-[#07040f]/40 to-[#07040f]/10" />
         </div>
 
         <div className="z-10 w-full max-w-6xl px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 pt-10 pb-10">
