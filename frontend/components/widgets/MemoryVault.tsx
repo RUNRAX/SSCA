@@ -41,10 +41,10 @@ interface DropdownMenuProps {
   coords: { bottom: number; left: number; width: number };
   currentCategory: string;
   onSelect: (key: string) => void;
+  menuRef: React.RefObject<HTMLDivElement | null>;
 }
 
-function DropdownMenu({ coords, currentCategory, onSelect }: DropdownMenuProps) {
-  const menuRef = useRef<HTMLDivElement>(null);
+function DropdownMenu({ coords, currentCategory, onSelect, menuRef }: DropdownMenuProps) {
 
   useEffect(() => {
     if (!menuRef.current) return;
@@ -64,9 +64,9 @@ function DropdownMenu({ coords, currentCategory, onSelect }: DropdownMenuProps) 
         left: coords.left,
         width: coords.width,
         /* Ultra-transparent glass */
-        background: 'rgba(15, 20, 35, 0.008)',
-        backdropFilter: 'blur(12px) saturate(1.2)',
-        WebkitBackdropFilter: 'blur(12px) saturate(1.2)',
+        background: 'rgba(255, 255, 255, 0.003)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         borderRadius: '14px',
         border: '1px solid rgba(255, 255, 255, 0.08)',
         boxShadow:
@@ -119,11 +119,15 @@ export function MemoryVault() {
   // --- Refs ---
   const addFormRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownMenuRef = useRef<HTMLDivElement>(null);
 
   // --- Close dropdown on click outside or scroll ---
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      const inTrigger = dropdownRef.current?.contains(target);
+      const inMenu = dropdownMenuRef.current?.contains(target);
+      if (!inTrigger && !inMenu) {
         setIsDropdownOpen(false);
       }
     }
@@ -322,6 +326,7 @@ export function MemoryVault() {
                   <DropdownMenu
                     coords={dropdownCoords}
                     currentCategory={newCategory}
+                    menuRef={dropdownMenuRef}
                     onSelect={(key) => {
                       setNewCategory(key);
                       setIsDropdownOpen(false);
