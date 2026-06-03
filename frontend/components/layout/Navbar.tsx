@@ -84,10 +84,10 @@ export function Navbar() {
         className="ios-liquid-glass mx-auto max-w-7xl h-14 flex items-center justify-between px-5 md:px-6 pointer-events-auto relative"
         style={{
           borderRadius: '18px',
-          background: 'rgba(255, 255, 255, 0.08)', // Increased white tint for higher brightness
-          backdropFilter: 'blur(3px) brightness(120%)',
-          WebkitBackdropFilter: 'blur(3px) brightness(120%)',
-          boxShadow: '0 8px 32px 0 rgba(0, 180, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)',
+          background: 'transparent',
+          backdropFilter: 'blur(3px) brightness(160%) saturate(180%)',
+          WebkitBackdropFilter: 'blur(3px) brightness(160%) saturate(180%)',
+          boxShadow: '0 8px 32px 0 rgba(0, 180, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05)',
         }}
       >
         {/* ── Left: Logo + Brand ── */}
