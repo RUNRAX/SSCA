@@ -20,26 +20,26 @@ export default function LoginPage() {
   }, [isAuthenticated, isLoading, router]);
 
   if (isLoading || isAuthenticated) {
-    return <div className="min-h-screen flex items-center justify-center bg-[#510e16]">
+    return <div className="min-h-screen flex items-center justify-center bg-[#0a0515]">
       <div className="animate-pulse text-white/50">Loading...</div>
     </div>;
   }
 
   return (
     <PageTransition>
-      <main className="min-h-screen w-full relative flex items-center justify-center bg-[#510e16] overflow-hidden">
+      <main className="min-h-screen w-full relative flex items-center justify-center bg-[#0a0515] overflow-hidden">
         
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/bg-red.png" 
-            alt="Background" 
+            src="/bg-northern-lights.png" 
+            alt="Violet Blue Northern Lights" 
             fill 
-            className="object-cover opacity-90"
+            className="object-cover opacity-90 mix-blend-screen"
             priority
           />
           {/* Gradient overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0515]/90 via-[#0a0515]/50 to-transparent" />
         </div>
 
         <div className="z-10 w-full max-w-6xl px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 pt-10 pb-10">
@@ -66,9 +66,9 @@ export default function LoginPage() {
 
           {/* Right Side: Glass Form */}
           <div className="w-full max-w-[420px] lg:mr-10">
-            <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.4)] relative overflow-hidden">
+            <div className="glass-panel glass-heavy rounded-[32px] p-8 md:p-10 shadow-[0_40px_80px_rgba(0,0,0,0.6)] border border-white/10 relative overflow-hidden">
               {/* Subtle top highlight */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-70" />
               
               <div className="relative w-full">
                 <div 
