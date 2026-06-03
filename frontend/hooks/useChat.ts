@@ -13,7 +13,7 @@ export function useChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { token } = useAuthContext();
+  const { token, userId } = useAuthContext();
 
   const sendMessage = useCallback(async (query: string) => {
     if (!query.trim() || !token) return;
@@ -30,8 +30,8 @@ export function useChat() {
     setIsStreaming(true);
     setError(null);
 
-    const savedPersonality = localStorage.getItem('ssca_agent_personality') || 'friendly';
-    const savedProfile = localStorage.getItem('ssca_user_profile');
+    const savedPersonality = localStorage.getItem(`ssca_agent_personality_${userId}`) || 'friendly';
+    const savedProfile = localStorage.getItem(`ssca_user_profile_${userId}`);
     let userName = 'User';
     if (savedProfile) {
       try { userName = JSON.parse(savedProfile).name; } catch(e) {}
@@ -97,7 +97,7 @@ export function useChat() {
     } finally {
       setIsStreaming(false);
     }
-  }, [token]);
+  }, [token, userId]);
 
   return {
     messages,

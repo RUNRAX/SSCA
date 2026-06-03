@@ -5,6 +5,7 @@ import { PageTransition } from '@/components/transitions/PageTransition';
 import { Navbar } from '@/components/layout/Navbar';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
 import { HorizontalLoader } from '@/components/widgets/HorizontalLoader';
+import { useAuthContext } from '@/components/auth/AuthProvider';
 
 export default function ProfilePage() {
   // Mock data for UI layout
@@ -16,11 +17,14 @@ export default function ProfilePage() {
   });
   const [agentPersonality, setAgentPersonality] = useState('friendly');
   const [showLoader, setShowLoader] = useState(true);
+  const { userId } = useAuthContext();
 
   // Load from local storage on mount
   useEffect(() => {
-    const savedProfile = localStorage.getItem('ssca_user_profile');
-    const savedPersonality = localStorage.getItem('ssca_agent_personality');
+    if (!userId) return;
+    
+    const savedProfile = localStorage.getItem(`ssca_user_profile_${userId}`);
+    const savedPersonality = localStorage.getItem(`ssca_agent_personality_${userId}`);
     
     if (savedProfile) {
       setUserProfile(JSON.parse(savedProfile));
@@ -36,20 +40,20 @@ export default function ProfilePage() {
     if (savedPersonality) {
       setAgentPersonality(savedPersonality);
     }
-  }, []);
+  }, [userId]);
 
   const handleProfileChange = (field: string, value: string) => {
     setUserProfile(prev => ({ ...prev, [field]: value }));
   };
 
   const saveProfile = () => {
-    localStorage.setItem('ssca_user_profile', JSON.stringify(userProfile));
+    if (userId) localStorage.setItem(`ssca_user_profile_${userId}`, JSON.stringify(userProfile));
     setIsEditing(false);
   };
 
   const handlePersonalityChange = (id: string) => {
     setAgentPersonality(id);
-    localStorage.setItem('ssca_agent_personality', id);
+    if (userId) localStorage.setItem(`ssca_agent_personality_${userId}`, id);
   };
 
   const personalities = [
