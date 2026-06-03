@@ -54,7 +54,8 @@ export function AIChatInterface() {
       intensity="heavy"
       className="flex flex-col h-full rounded-3xl overflow-hidden p-6 glass-glow"
       style={{
-        background: 'rgba(15, 20, 35, 0.05)',
+        /* Add a bluish tint to the frosted glass */
+        background: 'rgba(20, 50, 120, 0.12)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
       }}

@@ -65,8 +65,8 @@ function DropdownMenu({ coords, currentCategory, onSelect, menuRef }: DropdownMe
         left: coords.left,
         width: coords.width,
         background: 'transparent',
-        backdropFilter: 'blur(6px)',
-        WebkitBackdropFilter: 'blur(6px)',
+        backdropFilter: 'blur(4px)',
+        WebkitBackdropFilter: 'blur(4px)',
         borderRadius: '14px',
         border: '1px solid rgba(255, 255, 255, 0.05)',
         boxShadow: 'inset 0 1px 0 0 rgba(255, 255, 255, 0.04)',
@@ -77,7 +77,10 @@ function DropdownMenu({ coords, currentCategory, onSelect, menuRef }: DropdownMe
         {CATEGORY_KEYS.map((key) => (
           <button
             key={key}
-            onClick={() => onSelect(key)}
+            onPointerDown={(e) => {
+              e.preventDefault();
+              onSelect(key);
+            }}
             className={`flex items-center gap-2.5 px-3 py-2.5 text-sm text-left rounded-[10px] transition-all duration-150 ${
               currentCategory === key
                 ? 'bg-white/10 text-white font-medium'
@@ -241,7 +244,8 @@ export function MemoryVault() {
       intensity="medium"
       className="glass-glow flex flex-col h-full rounded-3xl p-6 relative"
       style={{
-        background: 'rgba(15, 20, 35, 0.05)',
+        /* Add a bluish tint to the frosted glass */
+        background: 'rgba(20, 50, 120, 0.12)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         overflow: 'visible',
