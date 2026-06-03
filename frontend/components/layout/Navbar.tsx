@@ -24,9 +24,13 @@ export function Navbar() {
     <div className="fixed top-0 left-0 right-0 z-[999] px-4 md:px-6 pt-3 pointer-events-none">
       {/* Background mask to prevent elements from crossing above the navbar in the gap */}
       <div 
-        className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-28 pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, var(--color-bg-base) 0%, var(--color-bg-base) 60%, transparent 100%)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          background: 'linear-gradient(to bottom, var(--color-bg-base) 0%, rgba(15, 20, 35, 0.4) 65%, transparent 100%)',
+          maskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
         }}
       />
       <nav
