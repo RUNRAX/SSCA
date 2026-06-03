@@ -307,6 +307,7 @@
 
 .animate-aurora {
   animation: auroraPan 45s ease-in-out infinite;
+  will-change: transform;
 }
 
 .ios-liquid-glass {

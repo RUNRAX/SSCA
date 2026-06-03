@@ -1,0 +1,13 @@
+AGENTS.md
+b64.txt
+README.md
+frontend\README.md
+frontend\requirements.txt
+frontend\public\bg-dashboard.png
+frontend\public\bg-northern-lights.png
+frontend\public\bg-red.png
+frontend\public\file.svg
+frontend\public\globe.svg
+frontend\public\next.svg
+frontend\public\vercel.svg
+frontend\public\window.svg

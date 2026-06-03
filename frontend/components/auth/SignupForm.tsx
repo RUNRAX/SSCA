@@ -8,6 +8,7 @@ interface SignupFormProps {
 }
 
 export function SignupForm({ onToggleMode }: SignupFormProps) {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -21,7 +22,7 @@ export function SignupForm({ onToggleMode }: SignupFormProps) {
     setError('');
     
     try {
-      await signup({ email, password });
+      await signup({ name, email, password });
       
       // Success animation before redirect
       if (formRef.current) {
@@ -73,7 +74,19 @@ export function SignupForm({ onToggleMode }: SignupFormProps) {
         </div>
       )}
       
-      <div className="flex flex-col gap-2 mb-6">
+      <div className="flex flex-col gap-2 mb-4">
+        <label className="text-xs font-semibold text-white/90 tracking-wide uppercase">Full Name</label>
+        <input 
+          type="text" 
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="w-full bg-white text-black font-medium rounded-md px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#e83445] transition-shadow shadow-sm"
+          placeholder="John Doe"
+        />
+      </div>
+      
+      <div className="flex flex-col gap-2 mb-4">
         <label className="text-xs font-semibold text-white/90 tracking-wide uppercase">Email</label>
         <input 
           type="email" 

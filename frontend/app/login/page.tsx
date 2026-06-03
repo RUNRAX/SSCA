@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { LoginForm } from '@/components/auth/LoginForm';
 import { SignupForm } from '@/components/auth/SignupForm';
 import { useAuthContext } from '@/components/auth/AuthProvider';
-import { PageTransition } from '@/components/transitions/PageTransition';
 import Image from 'next/image';
 
 export default function LoginPage() {
@@ -26,7 +25,6 @@ export default function LoginPage() {
   }
 
   return (
-    <PageTransition>
       <main className="min-h-screen w-full relative flex items-center justify-center bg-[#0a0515] overflow-hidden">
         
         {/* Pure CSS Dynamic Aurora Background */}
@@ -54,13 +52,16 @@ export default function LoginPage() {
               Please fill the form on the right side.
             </p>
             
-            {/* Camera Icon */}
-            <div className="mt-20 w-24 h-24 rounded-full bg-[#140203] flex items-center justify-center shadow-2xl relative overflow-hidden group">
-              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10 text-white">
-                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-                <circle cx="12" cy="13" r="3"></circle>
-              </svg>
+            {/* 3D Glass Orb Element */}
+            <div className="mt-20 w-32 h-32 relative perspective-1000">
+              <div className="w-full h-full rounded-full absolute inset-0 bg-gradient-to-tr from-[#8b5cf6]/40 to-[#06b6d4]/40 shadow-[0_0_40px_rgba(139,92,246,0.4)] backdrop-blur-md border border-white/20 animate-[spin_10s_linear_infinite]" style={{ transformStyle: 'preserve-3d' }}>
+                <div className="absolute inset-0 rounded-full border border-white/10" style={{ transform: 'rotateX(45deg) rotateY(45deg)' }} />
+                <div className="absolute inset-0 rounded-full border border-white/10" style={{ transform: 'rotateX(-45deg) rotateY(-45deg)' }} />
+                <div className="absolute inset-0 bg-white/5 rounded-full" style={{ transform: 'translateZ(20px)' }} />
+                
+                {/* Center Core */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-[0_0_20px_#fff,0_0_40px_#10b981] animate-pulse" style={{ transform: 'translateZ(40px)' }} />
+              </div>
             </div>
           </div>
 
@@ -72,7 +73,7 @@ export default function LoginPage() {
               <div className="absolute inset-0 rounded-[40px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,0,0,0.2)] pointer-events-none" />
               
               {/* Flowing internal liquid sheen (animated) */}
-              <div className="absolute inset-[-50%] animate-[liquidSpin_15s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0%,rgba(255,255,255,0.08)_25%,transparent_50%,rgba(255,255,255,0.08)_75%,transparent_100%)] blur-[20px] mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-[-50%] animate-[liquidSpin_15s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0%,rgba(255,255,255,0.08)_25%,transparent_50%,rgba(255,255,255,0.08)_75%,transparent_100%)] blur-[20px] mix-blend-overlay opacity-100 transition-opacity duration-700" />
               
               {/* Subtle frosted texture overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50 pointer-events-none mix-blend-overlay" />
@@ -99,6 +100,5 @@ export default function LoginPage() {
 
         </div>
       </main>
-    </PageTransition>
   );
 }

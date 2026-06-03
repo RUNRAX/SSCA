@@ -20,15 +20,14 @@ export function PageTransition({ children, className = '' }: { children: React.R
           opacity: 0,
           y: -30,
           scale: 0.98,
-          filter: 'blur(8px)',
           duration: 0.3,
           ease: 'power2.in'
         });
       } else {
         // Enter animation
         gsap.fromTo(containerRef.current,
-          { opacity: 0, y: 30, scale: 0.97, filter: 'blur(8px)' },
-          { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 0.6, ease: 'power3.out', clearProps: 'opacity,y,scale,filter' }
+          { opacity: 0, y: 30, scale: 0.97 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out', clearProps: 'opacity,y,scale' }
         );
       }
     }, containerRef);
