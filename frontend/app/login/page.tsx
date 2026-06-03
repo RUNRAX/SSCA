@@ -30,14 +30,16 @@ export default function LoginPage() {
       <main className="min-h-screen w-full relative flex items-center justify-center bg-[#0a0515] overflow-hidden">
         
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/bg-northern-lights.png" 
-            alt="Violet Blue Northern Lights" 
-            fill 
-            className="object-cover opacity-90 mix-blend-screen"
-            priority
-          />
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-[-10%] w-[120%] h-[120%] animate-aurora">
+            <Image 
+              src="/bg-northern-lights.png" 
+              alt="Violet Blue Northern Lights" 
+              fill 
+              className="object-cover opacity-90 mix-blend-screen"
+              priority
+            />
+          </div>
           {/* Gradient overlay to ensure text readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a0515]/90 via-[#0a0515]/50 to-transparent" />
         </div>
@@ -66,9 +68,9 @@ export default function LoginPage() {
 
           {/* Right Side: Glass Form */}
           <div className="w-full max-w-[420px] lg:mr-10">
-            <div className="glass-panel glass-heavy rounded-[32px] p-8 md:p-10 shadow-[0_40px_80px_rgba(0,0,0,0.6)] border border-white/10 relative overflow-hidden">
-              {/* Subtle top highlight */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-70" />
+            <div className="ios-liquid-glass p-8 md:p-10 relative overflow-hidden group">
+              {/* Ultra-soft specular highlight that moves on hover (simulated liquid sheen) */}
+              <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 transform -rotate-45 pointer-events-none" />
               
               <div className="relative w-full">
                 <div 
