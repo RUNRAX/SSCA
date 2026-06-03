@@ -259,9 +259,10 @@ export function MemoryVault() {
       intensity="medium"
       className="glass-glow flex flex-col h-full rounded-3xl p-6 relative"
       style={{
-        /* Add a bluish tint to the frosted glass */
-        background: 'rgba(20, 50, 120, 0.12)',
+        /* Premium white frosted glass */
+        background: 'rgba(255, 255, 255, 0.03)',
         backdropFilter: 'blur(16px)',
+        boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)',
         WebkitBackdropFilter: 'blur(16px)',
         overflow: 'visible',
       }}
