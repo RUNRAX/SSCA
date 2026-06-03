@@ -23,46 +23,57 @@ export function Navbar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-[999] px-4 md:px-6 pt-3 pointer-events-none">
       {/* Progressive Flowing Blur Background */}
-      <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none select-none z-[-1] flex justify-center">
+      <div className="absolute top-0 left-0 right-0 h-24 pointer-events-none select-none z-[-1] flex justify-center">
         <div className="w-full max-w-7xl relative h-full">
-          {/* Heavy blur (Top) */}
+          {/* Layer 1: Widest, softest blur. Fades out at the very bottom */}
           <div 
             className="absolute inset-0" 
             style={{ 
-              backdropFilter: 'blur(40px) saturate(200%) brightness(110%)', 
-              WebkitBackdropFilter: 'blur(40px) saturate(200%) brightness(110%)', 
-              maskImage: 'linear-gradient(to bottom, black 0%, black 40%, transparent 60%)', 
-              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 40%, transparent 60%)'
+              backdropFilter: 'blur(8px)', 
+              WebkitBackdropFilter: 'blur(8px)', 
+              maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)', 
+              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)'
             }} 
           />
           
-          {/* Medium blur (Middle) */}
+          {/* Layer 2: Medium blur. Fades out sooner */}
           <div 
             className="absolute inset-0" 
             style={{ 
-              backdropFilter: 'blur(16px) saturate(160%)', 
-              WebkitBackdropFilter: 'blur(16px) saturate(160%)', 
-              maskImage: 'linear-gradient(to bottom, transparent 40%, black 60%, transparent 80%)', 
-              WebkitMaskImage: 'linear-gradient(to bottom, transparent 40%, black 60%, transparent 80%)'
+              backdropFilter: 'blur(16px)', 
+              WebkitBackdropFilter: 'blur(16px)', 
+              maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 90%)', 
+              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 90%)'
             }} 
           />
           
-          {/* Light blur (Bottom edge) */}
+          {/* Layer 3: Heavy blur. Fades out even sooner */}
           <div 
             className="absolute inset-0" 
             style={{ 
-              backdropFilter: 'blur(4px)', 
-              WebkitBackdropFilter: 'blur(4px)', 
-              maskImage: 'linear-gradient(to bottom, transparent 60%, black 80%, transparent 100%)', 
-              WebkitMaskImage: 'linear-gradient(to bottom, transparent 60%, black 80%, transparent 100%)'
+              backdropFilter: 'blur(32px) saturate(140%)', 
+              WebkitBackdropFilter: 'blur(32px) saturate(140%)', 
+              maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 85%)', 
+              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 85%)'
             }} 
           />
           
-          {/* Ambient tint overlay */}
+          {/* Layer 4: Heaviest blur. Fades out immediately below the nav */}
           <div 
             className="absolute inset-0" 
             style={{ 
-              background: 'linear-gradient(to bottom, var(--color-bg-base) 0%, rgba(15, 20, 35, 0.4) 50%, transparent 100%)',
+              backdropFilter: 'blur(56px) saturate(180%)', 
+              WebkitBackdropFilter: 'blur(56px) saturate(180%)', 
+              maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 80%)', 
+              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 80%)'
+            }} 
+          />
+          
+          {/* Ambient tint overlay to match the glass panel */}
+          <div 
+            className="absolute inset-0" 
+            style={{ 
+              background: 'linear-gradient(to bottom, var(--color-bg-base) 0%, rgba(15, 20, 35, 0.4) 70%, transparent 100%)',
               maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
               WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)'
             }} 
