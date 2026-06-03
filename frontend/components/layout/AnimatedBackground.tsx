@@ -15,14 +15,8 @@ export function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[hsl(230,60%,4%)]">
-      {/* ── Image layer with Ken Burns + parallax ── */}
-      <div
-        className="absolute inset-[-10%] w-[120%] h-[120%]"
-        style={{
-          transform: `translate(${translateX}px, ${translateY}px)`,
-          transition: 'transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)',
-        }}
-      >
+      {/* ── Image layer with Ken Burns ── */}
+      <div className="absolute inset-[-10%] w-[120%] h-[120%]">
         <img
           src="/bg-dashboard.png"
           alt=""

@@ -1,7 +1,10 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useLayoutEffect } from 'react';
 import gsap from 'gsap';
+
+// Prevent Next.js warning
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 interface GlassPanelProps {
   intensity?: 'light' | 'medium' | 'heavy';
@@ -12,6 +15,7 @@ interface GlassPanelProps {
   scaleOnHover?: boolean;
   enterAnimation?: boolean;
   glowBorder?: boolean;
+  style?: React.CSSProperties;
 }
 
 export function GlassPanel({
@@ -23,10 +27,11 @@ export function GlassPanel({
   scaleOnHover = false,
   enterAnimation = false,
   glowBorder = false,
+  style = {},
 }: GlassPanelProps) {
   const panelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!panelRef.current) return;
 
     // Entry animation
@@ -34,7 +39,7 @@ export function GlassPanel({
       gsap.fromTo(
         panelRef.current,
         { opacity: 0, scale: 0.96, y: 20 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.1 }
+        { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.05, clearProps: 'all' }
       );
     }
 
@@ -104,6 +109,7 @@ export function GlassPanel({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={`glass-panel ${glassClass} ${hoverClass} ${glowClass} ${className}`}
+      style={style}
     >
       {children}
     </div>
