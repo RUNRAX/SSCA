@@ -36,9 +36,9 @@
   --glass-blur-heavy: blur(48px) saturate(2.2);
 
   /* Glow System — Enhanced */
-  --glass-glow-blue: hsla(220, 90%, 65%, 0.25);
-  --glass-glow-purple: hsla(270, 70%, 60%, 0.22);
-  --glass-glow-teal: hsla(195, 90%, 55%, 0.22);
+  --glass-glow-blue: hsla(220, 90%, 65%, 0.55);
+  --glass-glow-purple: hsla(270, 70%, 60%, 0.55);
+  --glass-glow-teal: hsla(195, 90%, 55%, 0.55);
 
   /* Typography */
   --font-display: 'Bricolage Grotesque', sans-serif;
@@ -56,8 +56,17 @@
     padding: 0;
   }
 
-  html {
-    scroll-behavior: smooth;
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
   }
 
   body {
