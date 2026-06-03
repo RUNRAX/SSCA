@@ -1,30 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
+/**
+ * Returns normalized mouse position (-1 to 1).
+ * Uses throttled updates instead of rAF loop to avoid
+ * constant re-renders when the mouse is idle.
+ */
 export function useMousePosition() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
+  const pendingRef = useRef(false);
 
   useEffect(() => {
-    let animationFrameId: number;
-    let currentX = 0;
-    let currentY = 0;
-
     const handleMouseMove = (event: MouseEvent) => {
-      // Normalize to -1 to 1 range
-      currentX = (event.clientX / window.innerWidth) * 2 - 1;
-      currentY = (event.clientY / window.innerHeight) * 2 - 1;
+      if (pendingRef.current) return; // skip until the last frame flushes
+      pendingRef.current = true;
+
+      rafRef.current = requestAnimationFrame(() => {
+        const x = (event.clientX / window.innerWidth) * 2 - 1;
+        const y = (event.clientY / window.innerHeight) * 2 - 1;
+        setMousePosition({ x, y });
+        pendingRef.current = false;
+      });
     };
 
-    const updatePosition = () => {
-      setMousePosition({ x: currentX, y: currentY });
-      animationFrameId = requestAnimationFrame(updatePosition);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    animationFrameId = requestAnimationFrame(updatePosition);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 

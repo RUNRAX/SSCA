@@ -10,22 +10,26 @@ export function LiquidDistortion() {
   const baseFreqRef4 = useRef<SVGFETurbulenceElement>(null);
   
   useEffect(() => {
-    // Animate the seed of the turbulence to create a flowing liquid effect
-    // We only need one object to animate all seeds
+    // Animate the seed at a lower frequency to reduce CPU/GPU load.
+    // SVG filter attribute updates are expensive — we throttle by using
+    // a longer duration and fewer updates via gsap's ticker lag-smoothing.
     const obj = { seed: 0 };
-    gsap.to(obj, {
+    const tween = gsap.to(obj, {
       seed: 100,
-      duration: 25, // Slowed down slightly for smoother effect
+      duration: 40, // Slower = fewer updates per second
       repeat: -1,
-      yoyo: true, // Yoyo with sine.inOut creates a more natural ebb and flow
+      yoyo: true,
       ease: "sine.inOut",
       onUpdate: () => {
-        baseFreqRef1.current?.setAttribute('seed', obj.seed.toString());
-        baseFreqRef2.current?.setAttribute('seed', (obj.seed + 100).toString());
-        baseFreqRef3.current?.setAttribute('seed', (obj.seed + 200).toString());
-        baseFreqRef4.current?.setAttribute('seed', (obj.seed + 300).toString());
+        const s = Math.round(obj.seed); // integer seeds avoid sub-pixel re-raster
+        baseFreqRef1.current?.setAttribute('seed', s.toString());
+        baseFreqRef2.current?.setAttribute('seed', (s + 100).toString());
+        baseFreqRef3.current?.setAttribute('seed', (s + 200).toString());
+        baseFreqRef4.current?.setAttribute('seed', (s + 300).toString());
       }
     });
+
+    return () => { tween.kill(); };
   }, []);
 
   return (

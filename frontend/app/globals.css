@@ -75,7 +75,11 @@
   }
 
   button {
-    all: unset;
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    font: inherit;
     cursor: pointer;
     box-sizing: border-box;
   }
@@ -359,3 +363,42 @@
 .toast-exit {
   animation: slideOutRight 0.3s cubic-bezier(0.7, 0, 0.84, 0) forwards;
 }
+
+/* ─── Interactive Button Transitions ─── */
+button,
+[role="button"] {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.3s ease,
+              color 0.2s ease,
+              opacity 0.2s ease;
+}
+
+/* Smooth press-down effect for all clickable elements */
+button:active:not(:disabled),
+[role="button"]:active:not(:disabled) {
+  transform: scale(0.96);
+  transition-duration: 0.1s;
+}
+
+/* Subtle glow on hover for glass-styled buttons */
+.glass-panel button:hover:not(:disabled) {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Smooth Transitions for Interactive Elements ─── */
+input,
+textarea,
+select {
+  transition: border-color 0.25s ease,
+              box-shadow 0.3s ease,
+              background-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.08),
+              0 0 20px rgba(56, 189, 248, 0.06);
+}
+

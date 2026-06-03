@@ -34,6 +34,71 @@ function getCategoryKey(memory: { metadata?: Record<string, any> }) {
 }
 
 // ---------------------------------------------------------------------------
+// Dropdown sub-component (portaled) — with blur + entrance animation
+// ---------------------------------------------------------------------------
+
+interface DropdownMenuProps {
+  coords: { bottom: number; left: number; width: number };
+  currentCategory: string;
+  onSelect: (key: string) => void;
+}
+
+function DropdownMenu({ coords, currentCategory, onSelect }: DropdownMenuProps) {
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!menuRef.current) return;
+    gsap.fromTo(
+      menuRef.current,
+      { opacity: 0, scale: 0.92, y: 8 },
+      { opacity: 1, scale: 1, y: 0, duration: 0.25, ease: 'back.out(2)' }
+    );
+  }, []);
+
+  return (
+    <div
+      ref={menuRef}
+      className="fixed z-[9999] origin-bottom-left"
+      style={{
+        bottom: coords.bottom,
+        left: coords.left,
+        width: coords.width,
+        /* Dark frosted glass background — visible blur */
+        background: 'rgba(12, 14, 28, 0.75)',
+        backdropFilter: 'blur(40px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+        borderRadius: '14px',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        boxShadow:
+          '0 20px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.08), inset 0 0 0 0.5px rgba(255, 255, 255, 0.04)',
+        overflow: 'hidden',
+      }}
+    >
+      <div className="p-1.5 flex flex-col gap-0.5">
+        {CATEGORY_KEYS.map((key) => (
+          <button
+            key={key}
+            onClick={() => onSelect(key)}
+            className={`flex items-center gap-2.5 px-3 py-2.5 text-sm text-left rounded-[10px] transition-all duration-150 ${
+              currentCategory === key
+                ? 'bg-white/15 text-white font-medium'
+                : 'text-white/70 hover:bg-white/10 hover:text-white'
+            }`}
+          >
+            <span
+              className={`w-2 h-2 rounded-full ${CATEGORY_MAP[key].bg.replace('/20', '')} ${
+                currentCategory === key ? 'shadow-[0_0_8px_currentColor]' : ''
+              }`}
+            />
+            {CATEGORY_MAP[key].label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 
@@ -254,30 +319,14 @@ export function MemoryVault() {
                 </button>
 
                 {isDropdownOpen && typeof document !== 'undefined' && createPortal(
-                  <div 
-                    className="fixed ios-liquid-glass border border-white/10 rounded-xl overflow-hidden z-[9999] animate-in shadow-xl origin-bottom-left"
-                    style={{
-                      bottom: dropdownCoords.bottom,
-                      left: dropdownCoords.left,
-                      width: dropdownCoords.width
+                  <DropdownMenu
+                    coords={dropdownCoords}
+                    currentCategory={newCategory}
+                    onSelect={(key) => {
+                      setNewCategory(key);
+                      setIsDropdownOpen(false);
                     }}
-                  >
-                    <div className="p-1.5 flex flex-col gap-1">
-                      {CATEGORY_KEYS.map((key) => (
-                        <button
-                          key={key}
-                          onClick={() => {
-                            setNewCategory(key);
-                            setIsDropdownOpen(false);
-                          }}
-                          className={`flex items-center gap-2.5 px-3 py-2 text-sm text-left rounded-lg transition-all duration-200 ${newCategory === key ? 'bg-white/15 text-white font-medium' : 'text-white/70 hover:bg-white/10 hover:text-white'}`}
-                        >
-                          <span className={`w-2 h-2 rounded-full ${CATEGORY_MAP[key].bg.replace('/20', '')} ${newCategory === key ? 'shadow-[0_0_8px_currentColor]' : ''}`} />
-                          {CATEGORY_MAP[key].label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>,
+                  />,
                   document.body
                 )}
               </div>

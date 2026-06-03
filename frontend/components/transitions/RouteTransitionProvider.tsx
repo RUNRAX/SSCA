@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 
 interface TransitionContextType {
@@ -11,31 +11,31 @@ const TransitionContext = createContext<TransitionContextType>({ isTransitioning
 
 export function RouteTransitionProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [displayChildren, setDisplayChildren] = useState(children);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [currentPath, setCurrentPath] = useState(pathname);
+  const prevPathRef = useRef(pathname);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
-    if (pathname !== currentPath) {
-      // Start exit animation
+    if (pathname !== prevPathRef.current) {
+      prevPathRef.current = pathname;
       setIsTransitioning(true);
-      setCurrentPath(pathname);
-      
-      const timeout = setTimeout(() => {
-        // Update children and end transition after exit animation duration
-        setDisplayChildren(children);
+
+      // Clear any existing timeout
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+      timeoutRef.current = setTimeout(() => {
         setIsTransitioning(false);
-      }, 300); // 300ms exit animation
-      
-      return () => clearTimeout(timeout);
-    } else {
-      setDisplayChildren(children);
+      }, 300);
     }
-  }, [pathname, children, currentPath]);
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [pathname]);
 
   return (
     <TransitionContext.Provider value={{ isTransitioning }}>
-      {displayChildren}
+      {children}
     </TransitionContext.Provider>
   );
 }
