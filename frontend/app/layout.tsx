@@ -5,7 +5,6 @@ import { AnimatedBackground } from "@/components/layout/AnimatedBackground";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { RouteTransitionProvider } from "@/components/transitions/RouteTransitionProvider";
 import { ToastProvider } from "@/components/layout/ToastProvider";
-import { SmoothScrollProvider } from "@/components/transitions/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: "SSCA Cognitive Engine",
@@ -20,17 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased min-h-screen">
-        <SmoothScrollProvider>
-          <AuthProvider>
-            <ToastProvider>
-              <LiquidDistortion />
-              <AnimatedBackground />
-              <RouteTransitionProvider>
-                {children}
-              </RouteTransitionProvider>
-            </ToastProvider>
-          </AuthProvider>
-        </SmoothScrollProvider>
+        <AuthProvider>
+          <ToastProvider>
+            <LiquidDistortion />
+            <AnimatedBackground />
+            <RouteTransitionProvider>
+              {children}
+            </RouteTransitionProvider>
+          </ToastProvider>
+        </AuthProvider>
       </body>
     </html>
   );

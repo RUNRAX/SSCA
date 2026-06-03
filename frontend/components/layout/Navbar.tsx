@@ -26,8 +26,8 @@ export function Navbar() {
       <div 
         className="absolute top-0 left-0 right-0 h-28 pointer-events-none"
         style={{
-          backdropFilter: 'blur(4px)',
-          WebkitBackdropFilter: 'blur(4px)',
+          backdropFilter: 'blur(1px)',
+          WebkitBackdropFilter: 'blur(1px)',
           background: 'linear-gradient(to bottom, var(--color-bg-base) 0%, rgba(15, 20, 35, 0.4) 65%, transparent 100%)',
           maskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 65%, transparent 100%)',
@@ -38,8 +38,8 @@ export function Navbar() {
         style={{
           borderRadius: '18px',
           background: 'rgba(15, 20, 35, 0.05)', // 5% opacity dark tint
-          backdropFilter: 'blur(2px)', // Reduced blur further
-          WebkitBackdropFilter: 'blur(2px)',
+          backdropFilter: 'blur(0px)', // No blur
+          WebkitBackdropFilter: 'blur(0px)',
         }}
       >
         {/* ── Left: Logo + Brand ── */}
