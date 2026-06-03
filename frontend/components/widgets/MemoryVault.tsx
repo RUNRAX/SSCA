@@ -125,22 +125,37 @@ export function MemoryVault() {
 
   // --- Close dropdown on click outside or scroll ---
   useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
+    function handleClickOutside(e: PointerEvent | MouseEvent | TouchEvent) {
       const target = e.target as Node;
+      if (!target) return;
       const inTrigger = dropdownRef.current?.contains(target);
       const inMenu = dropdownMenuRef.current?.contains(target);
       if (!inTrigger && !inMenu) {
         setIsDropdownOpen(false);
       }
     }
-    function handleScroll() {
+    function handleScroll(e: Event) {
+      const target = e.target as Node;
+      // If scrolling inside the menu itself, don't close it
+      if (target && dropdownMenuRef.current?.contains(target)) return;
       setIsDropdownOpen(false);
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    window.addEventListener('scroll', handleScroll, true); // Use capture to catch all scroll events
+    
+    // Use pointerdown to catch touch, pen, and mouse reliably
+    document.addEventListener('pointerdown', handleClickOutside, true);
+    document.addEventListener('mousedown', handleClickOutside, true);
+    
+    // Catch scroll, wheel (trackpad/mousewheel), and touchmove for instant closing
+    window.addEventListener('scroll', handleScroll, true);
+    window.addEventListener('wheel', handleScroll, { capture: true, passive: true });
+    window.addEventListener('touchmove', handleScroll, { capture: true, passive: true });
+    
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('pointerdown', handleClickOutside, true);
+      document.removeEventListener('mousedown', handleClickOutside, true);
       window.removeEventListener('scroll', handleScroll, true);
+      window.removeEventListener('wheel', handleScroll, true);
+      window.removeEventListener('touchmove', handleScroll, true);
     };
   }, []);
 

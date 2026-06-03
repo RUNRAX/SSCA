@@ -62,8 +62,8 @@ export function Navbar() {
           <div 
             className="absolute inset-0" 
             style={{ 
-              backdropFilter: 'blur(5px) saturate(120%)', 
-              WebkitBackdropFilter: 'blur(5px) saturate(120%)', 
+              backdropFilter: 'blur(3px) saturate(150%)', 
+              WebkitBackdropFilter: 'blur(3px) saturate(150%)', 
               maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 80%)', 
               WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 80%)'
             }} 
@@ -85,8 +85,8 @@ export function Navbar() {
         style={{
           borderRadius: '18px',
           background: 'rgba(15, 20, 35, 0.05)', // 5% opacity dark tint over the glass
-          backdropFilter: 'blur(5px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(5px) saturate(120%)',
+          backdropFilter: 'blur(3px) saturate(150%)',
+          WebkitBackdropFilter: 'blur(3px) saturate(150%)',
         }}
       >
         {/* ── Left: Logo + Brand ── */}
