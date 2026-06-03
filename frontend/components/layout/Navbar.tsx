@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { LogOut } from 'lucide-react';
+import { LogOut, User } from 'lucide-react';
+import Link from 'next/link';
 import { useAuthContext } from '@/components/auth/AuthProvider';
 
 /* ─── Helpers ─── */
@@ -112,15 +113,15 @@ export function Navbar() {
 
         {/* ── Right: User + Logout ── */}
         <div className="flex items-center gap-3">
-          {/* User avatar */}
-          <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-tr from-cyan-400 to-purple-500 text-[10px] font-bold text-white shadow-md shadow-purple-500/15">
+          {/* User Profile Link */}
+          <Link href="/profile" className="flex items-center gap-2 hover:bg-white/5 px-2 py-1 rounded-lg transition-all cursor-pointer group">
+            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-tr from-cyan-400 to-purple-500 text-[10px] font-bold text-white shadow-md shadow-purple-500/15 group-hover:shadow-cyan-400/40 transition-shadow">
               {initials}
             </div>
-            <span className="text-xs text-white/60 hidden md:inline-block max-w-[150px] truncate">
+            <span className="text-xs text-white/60 hidden md:inline-block max-w-[150px] truncate group-hover:text-white transition-colors">
               {userId}
             </span>
-          </div>
+          </Link>
 
           {/* Divider */}
           <div className="w-px h-5 bg-white/10" />
