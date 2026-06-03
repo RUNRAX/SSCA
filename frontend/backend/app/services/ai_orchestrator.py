@@ -1,4 +1,4 @@
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
@@ -25,10 +25,9 @@ class CognitiveOrchestrator:
         self.vector_store = vector_store
         settings = get_settings()
 
-        self.llm = ChatOpenAI(
-            model=settings.xai_model,
-            api_key=settings.xai_api_key,
-            base_url="https://api.x.ai/v1",
+        self.llm = ChatGroq(
+            model=settings.groq_model,
+            api_key=settings.groq_api_key,
             temperature=0.7,
             max_tokens=2048,
         )

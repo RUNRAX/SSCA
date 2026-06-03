@@ -17,9 +17,9 @@ class Settings(BaseSettings):
     google_api_key: str = ""
     embedding_model: str = "gemini-embedding-001"
 
-    # xAI Grok (used for chat)
-    xai_api_key: str = ""
-    xai_model: str = "grok-3-mini-fast"
+    # Groq (used for chat - free tier)
+    groq_api_key: str = ""
+    groq_model: str = "llama-3.3-70b-versatile"
 
     # App
     cors_origins: List[str] = ["http://localhost:3000", "https://ssca-frontend.onrender.com"]
