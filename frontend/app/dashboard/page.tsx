@@ -7,7 +7,7 @@ import { PageTransition } from '@/components/transitions/PageTransition';
 export default function DashboardPage() {
   return (
     <PageTransition>
-      <main className="min-h-screen w-full relative pt-24 pb-8 px-4 md:px-8 max-w-7xl mx-auto">
+      <main className="min-h-screen w-full relative pt-28 pb-8 px-4 md:px-6 max-w-7xl mx-auto">
         
         <div className="mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Cognitive Engine</h1>

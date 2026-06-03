@@ -35,10 +35,10 @@
   --glass-blur-medium: blur(40px) saturate(1.6);
   --glass-blur-heavy: blur(60px) saturate(1.8);
 
-  /* Glow System */
-  --glass-glow-blue: hsla(220, 90%, 65%, 0.15);
-  --glass-glow-purple: hsla(270, 70%, 60%, 0.15);
-  --glass-glow-teal: hsla(195, 90%, 55%, 0.15);
+  /* Glow System — Enhanced */
+  --glass-glow-blue: hsla(220, 90%, 65%, 0.25);
+  --glass-glow-purple: hsla(270, 70%, 60%, 0.22);
+  --glass-glow-teal: hsla(195, 90%, 55%, 0.22);
 
   /* Typography */
   --font-display: 'Bricolage Grotesque', sans-serif;
@@ -167,8 +167,9 @@
 .glass-glow {
   box-shadow: 
     var(--glass-shadow),
-    0 0 25px var(--glass-glow-blue),
-    0 0 50px var(--glass-glow-purple);
+    0 0 40px var(--glass-glow-blue),
+    0 0 80px var(--glass-glow-purple),
+    0 0 120px hsla(240, 80%, 60%, 0.06);
   animation: glowBorder 6s ease-in-out infinite;
 }
 
@@ -199,20 +200,23 @@
   0%, 100% { 
     box-shadow: 
       var(--glass-shadow),
-      0 0 15px var(--glass-glow-blue),
-      0 0 30px hsla(220, 90%, 65%, 0.08);
+      0 0 30px var(--glass-glow-blue),
+      0 0 60px hsla(220, 90%, 65%, 0.12),
+      0 0 100px hsla(220, 90%, 65%, 0.04);
   }
   33% { 
     box-shadow: 
       var(--glass-shadow),
-      0 0 15px var(--glass-glow-purple),
-      0 0 30px hsla(270, 70%, 60%, 0.08);
+      0 0 30px var(--glass-glow-purple),
+      0 0 60px hsla(270, 70%, 60%, 0.12),
+      0 0 100px hsla(270, 70%, 60%, 0.04);
   }
   66% { 
     box-shadow: 
       var(--glass-shadow),
-      0 0 15px var(--glass-glow-teal),
-      0 0 30px hsla(195, 90%, 55%, 0.08);
+      0 0 30px var(--glass-glow-teal),
+      0 0 60px hsla(195, 90%, 55%, 0.12),
+      0 0 100px hsla(195, 90%, 55%, 0.04);
   }
 }
 

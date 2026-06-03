@@ -141,13 +141,16 @@ export function AIChatInterface() {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Ask SSCA or store a memory..."
-          className="w-full bg-black/20 border border-white/20 rounded-2xl py-4 pl-5 pr-14 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-colors shadow-inner"
+          className="w-full bg-white/[0.04] backdrop-blur-xl border border-white/[0.12] rounded-2xl py-4 pl-5 pr-14 text-white placeholder-white/30 focus:outline-none focus:border-white/25 focus:shadow-[0_0_30px_hsla(220,90%,65%,0.12),0_0_60px_hsla(270,70%,60%,0.06)] transition-all duration-300"
+          style={{
+            boxShadow: 'inset 0 1px 0 0 rgba(255,255,255,0.06), inset 0 -1px 0 0 rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.15)',
+          }}
           disabled={isStreaming}
         />
         <button
           type="submit"
           disabled={!query.trim() || isStreaming}
-          className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-white text-black rounded-xl hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-gradient-to-tr from-cyan-400 to-purple-500 text-white rounded-xl hover:shadow-[0_0_20px_hsla(220,90%,65%,0.3)] transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <Send className="w-5 h-5" />
         </button>
