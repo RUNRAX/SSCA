@@ -6,7 +6,7 @@
 
 :root {
   /* Colors */
-  --color-bg-base: hsl(215, 85%, 12%);
+  --color-bg-base: hsl(230, 60%, 8%);
   --color-accent-teal: hsl(195, 90%, 55%);
   --color-accent-blue: hsl(220, 90%, 65%);
   --color-accent-purple: hsl(270, 70%, 60%);
@@ -14,17 +14,23 @@
   --color-text-secondary: hsla(0, 0%, 100%, 0.7);
   --color-text-muted: hsla(0, 0%, 100%, 0.5);
   --color-danger: hsl(350, 80%, 55%);
+  --color-success: hsl(150, 70%, 45%);
 
-  /* Glass System */
-  --glass-bg-light: hsla(0, 0%, 100%, 0.05);
-  --glass-bg-medium: hsla(0, 0%, 100%, 0.12);
-  --glass-bg-heavy: hsla(0, 0%, 100%, 0.20);
-  --glass-border: hsla(0, 0%, 100%, 0.18);
-  --glass-border-highlight: hsla(0, 0%, 100%, 0.35);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  --glass-blur-light: blur(12px);
-  --glass-blur-medium: blur(24px);
-  --glass-blur-heavy: blur(48px);
+  /* Liquid Glass System */
+  --glass-bg-light: hsla(220, 40%, 90%, 0.04);
+  --glass-bg-medium: hsla(220, 40%, 90%, 0.06);
+  --glass-bg-heavy: hsla(220, 40%, 90%, 0.10);
+  --glass-border: hsla(220, 60%, 80%, 0.12);
+  --glass-border-highlight: hsla(220, 80%, 90%, 0.30);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  --glass-blur-light: blur(16px);
+  --glass-blur-medium: blur(40px);
+  --glass-blur-heavy: blur(60px);
+
+  /* Glow System */
+  --glass-glow-blue: hsla(220, 90%, 65%, 0.15);
+  --glass-glow-purple: hsla(270, 70%, 60%, 0.15);
+  --glass-glow-teal: hsla(195, 90%, 55%, 0.15);
 
   /* Typography */
   --font-display: 'Bricolage Grotesque', sans-serif;
@@ -72,7 +78,7 @@
   }
 }
 
-/* Glass Utility Classes */
+/* ─── Liquid Glass Panel ─── */
 .glass-panel {
   background: var(--glass-bg-medium);
   border: 1px solid var(--glass-border);
@@ -83,6 +89,7 @@
   z-index: 10;
 }
 
+/* Top shimmer highlight */
 .glass-panel::before {
   content: "";
   position: absolute;
@@ -91,7 +98,8 @@
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--glass-border-highlight), transparent);
-  opacity: 0.5;
+  opacity: 0.6;
+  z-index: 1;
 }
 
 .hover-shimmer:hover::before {
@@ -99,6 +107,7 @@
   background-size: 200% 100%;
 }
 
+/* Glass intensity levels */
 .glass-light {
   backdrop-filter: var(--glass-blur-light);
   -webkit-backdrop-filter: var(--glass-blur-light);
@@ -117,7 +126,56 @@
   background: var(--glass-bg-heavy);
 }
 
-/* Keyframes */
+/* Animated glow border */
+.glass-glow {
+  box-shadow: 
+    var(--glass-shadow),
+    0 0 20px var(--glass-glow-blue),
+    0 0 40px var(--glass-glow-purple);
+  animation: glowBorder 6s ease-in-out infinite;
+}
+
+/* ─── Ken Burns Background ─── */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1.0) translate(0%, 0%);
+  }
+  25% {
+    transform: scale(1.15) translate(-2%, -1%);
+  }
+  50% {
+    transform: scale(1.1) translate(1%, -2%);
+  }
+  75% {
+    transform: scale(1.2) translate(-1%, 1%);
+  }
+  100% {
+    transform: scale(1.0) translate(0%, 0%);
+  }
+}
+
+/* ─── Keyframes ─── */
+@keyframes glowBorder {
+  0%, 100% { 
+    box-shadow: 
+      var(--glass-shadow),
+      0 0 15px var(--glass-glow-blue),
+      0 0 30px hsla(220, 90%, 65%, 0.08);
+  }
+  33% { 
+    box-shadow: 
+      var(--glass-shadow),
+      0 0 15px var(--glass-glow-purple),
+      0 0 30px hsla(270, 70%, 60%, 0.08);
+  }
+  66% { 
+    box-shadow: 
+      var(--glass-shadow),
+      0 0 15px var(--glass-glow-teal),
+      0 0 30px hsla(195, 90%, 55%, 0.08);
+  }
+}
+
 @keyframes liquidWarp {
   0% { filter: url(#liquidLight) hue-rotate(0deg); }
   50% { filter: url(#liquidMedium) hue-rotate(5deg); }
@@ -145,13 +203,28 @@
 }
 
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 15px rgba(255,255,255,0.1); }
-  50% { box-shadow: 0 0 25px rgba(255,255,255,0.3); }
+  0%, 100% { box-shadow: 0 0 15px rgba(255,255,255,0.05); }
+  50% { box-shadow: 0 0 30px rgba(255,255,255,0.15); }
 }
 
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes slideInRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
 }
 
 /* Page Transitions */
@@ -162,11 +235,45 @@
   animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) reverse forwards;
 }
 
-/* Custom Scrollbar for Timelines */
+/* ─── Custom Scrollbar ─── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsla(0, 0%, 100%, 0.15);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsla(0, 0%, 100%, 0.3);
+}
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ─── Streaming cursor ─── */
+.streaming-cursor::after {
+  content: "▋";
+  animation: blink 1s step-end infinite;
+  color: var(--color-accent-teal);
+  margin-left: 2px;
+}
+
+/* ─── Toast animations ─── */
+.toast-enter {
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-exit {
+  animation: slideOutRight 0.3s cubic-bezier(0.7, 0, 0.84, 0) forwards;
 }

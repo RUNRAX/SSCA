@@ -11,6 +11,7 @@ interface GlassPanelProps {
   hoverGlow?: boolean;
   scaleOnHover?: boolean;
   enterAnimation?: boolean;
+  glowBorder?: boolean;
 }
 
 export function GlassPanel({
@@ -21,6 +22,7 @@ export function GlassPanel({
   hoverGlow = false,
   scaleOnHover = false,
   enterAnimation = false,
+  glowBorder = false,
 }: GlassPanelProps) {
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -61,9 +63,9 @@ export function GlassPanel({
     
     if (hoverGlow) {
       gsap.to(panelRef.current, { 
-        boxShadow: '0 0 25px rgba(0, 230, 255, 0.15), var(--glass-shadow)',
-        borderColor: 'rgba(255, 255, 255, 0.4)',
-        duration: 0.3 
+        boxShadow: '0 0 30px hsla(220, 90%, 65%, 0.2), 0 0 60px hsla(270, 70%, 60%, 0.1), var(--glass-shadow)',
+        borderColor: 'rgba(255, 255, 255, 0.3)',
+        duration: 0.4 
       });
     }
   };
@@ -79,20 +81,21 @@ export function GlassPanel({
       gsap.to(panelRef.current, { 
         boxShadow: 'var(--glass-shadow)',
         borderColor: 'var(--glass-border)',
-        duration: 0.3 
+        duration: 0.4 
       });
     }
   };
 
   const glassClass = `glass-${intensity}`;
   const hoverClass = hoverGlow ? 'group hover-shimmer' : '';
+  const glowClass = glowBorder ? 'glass-glow' : '';
 
   return (
     <div
       ref={panelRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`glass-panel ${glassClass} ${hoverClass} ${className}`}
+      className={`glass-panel ${glassClass} ${hoverClass} ${glowClass} ${className}`}
     >
       {children}
     </div>

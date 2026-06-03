@@ -2,7 +2,8 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { AuthProvider, useAuthContext } from '@/components/auth/AuthProvider';
+import { useAuthContext } from '@/components/auth/AuthProvider';
+import { Navbar } from '@/components/layout/Navbar';
 
 function DashboardGuard({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuthContext();
@@ -26,6 +27,7 @@ function DashboardGuard({ children }: { children: React.ReactNode }) {
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <DashboardGuard>
+      <Navbar />
       {children}
     </DashboardGuard>
   );
