@@ -225,7 +225,7 @@ export function MemoryVault() {
                 </button>
 
                 {isDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-44 ios-liquid-glass border border-white/10 rounded-xl overflow-hidden z-[100] animate-in shadow-xl origin-top-left">
+                  <div className="absolute bottom-full left-0 mb-2 w-44 ios-liquid-glass border border-white/10 rounded-xl overflow-hidden z-[100] animate-in shadow-xl origin-bottom-left">
                     <div className="p-1.5 flex flex-col gap-1">
                       {CATEGORY_KEYS.map((key) => (
                         <button
