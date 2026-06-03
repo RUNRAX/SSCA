@@ -26,9 +26,9 @@ export function Navbar() {
         className="glass-panel glass-glow mx-auto max-w-7xl h-14 flex items-center justify-between px-5 md:px-6"
         style={{
           borderRadius: '18px',
-          background: 'rgba(15, 20, 35, 0.15)', // Very transparent dark tint
-          backdropFilter: 'blur(80px) saturate(2.5)', // Extremely strong blur
-          WebkitBackdropFilter: 'blur(80px) saturate(2.5)',
+          background: 'rgba(15, 20, 35, 0.05)', // 5% opacity dark tint
+          backdropFilter: 'blur(12px)', // Reduced blur
+          WebkitBackdropFilter: 'blur(12px)',
         }}
       >
         {/* ── Left: Logo + Brand ── */}
