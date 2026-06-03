@@ -79,15 +79,25 @@ export function MemoryVault() {
       setIsAddOpen(true);
       requestAnimationFrame(() => {
         if (addFormRef.current) {
+          addFormRef.current.style.overflow = 'hidden';
           gsap.fromTo(
             addFormRef.current,
             { height: 0, opacity: 0 },
-            { height: 'auto', opacity: 1, duration: 0.2, ease: 'power3.out' },
+            { 
+              height: 'auto', 
+              opacity: 1, 
+              duration: 0.2, 
+              ease: 'power3.out',
+              onComplete: () => {
+                if (addFormRef.current) addFormRef.current.style.overflow = 'visible';
+              }
+            },
           );
         }
       });
     } else {
       if (addFormRef.current) {
+        addFormRef.current.style.overflow = 'hidden';
         gsap.to(addFormRef.current, {
           height: 0,
           opacity: 0,
@@ -111,6 +121,7 @@ export function MemoryVault() {
       setNewCategory('conversation');
       // Collapse form
       if (addFormRef.current) {
+        addFormRef.current.style.overflow = 'hidden';
         gsap.to(addFormRef.current, {
           height: 0,
           opacity: 0,
@@ -204,7 +215,7 @@ export function MemoryVault() {
 
       {/* ---- Add Form (animated) ---- */}
       {isAddOpen && (
-        <div ref={addFormRef} className="overflow-hidden mb-3">
+        <div ref={addFormRef} className="mb-3" style={{ overflow: 'hidden' }}>
           <div className="p-4 bg-white/5 border border-white/10 rounded-xl space-y-3">
             <textarea
               value={newContent}
