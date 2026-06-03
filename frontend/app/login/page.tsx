@@ -53,21 +53,7 @@ export default function LoginPage() {
               Whatever happens <br/>
               here, <span className="font-bold">stays</span> here
             </h1>
-            <p className="text-white/80 text-sm md:text-base mt-2 font-medium tracking-wide">
-              Please fill the form on the right side.
-            </p>
-            
-            {/* 3D Glass Orb Element */}
-            <div className="mt-20 w-32 h-32 relative perspective-1000">
-              <div className="w-full h-full rounded-full absolute inset-0 bg-gradient-to-tr from-[#8b5cf6]/40 to-[#06b6d4]/40 shadow-[0_0_40px_rgba(139,92,246,0.4)] backdrop-blur-md border border-white/20 animate-[spin_10s_linear_infinite]" style={{ transformStyle: 'preserve-3d' }}>
-                <div className="absolute inset-0 rounded-full border border-white/10" style={{ transform: 'rotateX(45deg) rotateY(45deg)' }} />
-                <div className="absolute inset-0 rounded-full border border-white/10" style={{ transform: 'rotateX(-45deg) rotateY(-45deg)' }} />
-                <div className="absolute inset-0 bg-white/5 rounded-full" style={{ transform: 'translateZ(20px)' }} />
-                
-                {/* Center Core */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-[0_0_20px_#fff,0_0_40px_#10b981] animate-pulse" style={{ transform: 'translateZ(40px)' }} />
-              </div>
-            </div>
+
           </div>
 
           {/* Right Side: Ultimate Liquid Glass Form */}
